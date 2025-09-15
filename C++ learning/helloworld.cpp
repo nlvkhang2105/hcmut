@@ -7,7 +7,7 @@ int main() {
         string date_of_birth;
         short current_year;
         cout << "Please enter your name: ";
-        cin >> name ;
+        getline(cin, name);
         cout << "Please enter your DOB: ";
         cin >> date_of_birth;
         cout << "Please enter current year: ";
