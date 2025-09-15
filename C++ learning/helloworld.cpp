@@ -3,7 +3,16 @@
 using namespace std;
 int main() {
         cout << "Hello World!" << endl;
-        cout << "Name: Nguyen Lam Vinh Khang" << endl << "Date of birth: 21/05/2007" << endl;
-        cout << "2025 - 2007 = " << 2025 - 2007;
+        string name;
+        string date_of_birth;
+        short current_year;
+        cout << "Please enter your name: ";
+        cin >> name ;
+        cout << "Please enter your DOB: ";
+        cin >> date_of_birth;
+        cout << "Please enter current year: ";
+        cin >> current_year;  
+        cout << "Name: " << name << endl << "Date of birth: " << date_of_birth << endl;
+        cout << current_year << " - 2007 = " << current_year - 2007;
         return 0;
 }
