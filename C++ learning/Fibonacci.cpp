@@ -4,6 +4,7 @@ using namespace std;
 int main() {
     int next,latest,sum,step;
     next = 0;
+    sum = 0;
     latest = 1;
     step = 1;
     do {
@@ -20,7 +21,7 @@ int main() {
         next = latest;
         cout << "step " << step++ << " " << "next: "<< next << " " << "latest: " << latest << " sum: " << sum << endl;
         latest = sum;
-    } while (sum <= 1000);
+    } while (true);
     system("pause");
     return 0;
 }
