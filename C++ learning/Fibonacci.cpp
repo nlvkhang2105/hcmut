@@ -9,6 +9,13 @@ int main() {
     do {
         sum = next + latest;
         cout << "step " << step++ << " next: "<< next << " " << "latest: " << latest << " sum: " << sum << endl;
+        if (sum >= 1000) {
+            cout<< "step " << step++ << " " << "sum: " << sum << " >= 1000, stop!" << endl;
+            break;
+        } 
+        else {
+            cout << "step " << step++ << " " << "Not there yet" << endl;
+        }
         next = latest;
         cout << "step " << step++ << " " << "next: "<< next << " " << "latest: " << latest << " sum: " << sum << endl;
         latest = sum;
