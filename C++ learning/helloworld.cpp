@@ -1,4 +1,5 @@
 #include<iostream>
+#include<windows.h>
 /*sybau*/
 using namespace std;
 int main() {
@@ -6,13 +7,20 @@ int main() {
         string name;
         string date_of_birth;
         short current_year;
+        int i, n;
         cout << "Please enter your name: ";
         getline(cin, name);
         cout << "Please enter your date of birth: ";
         cin >> date_of_birth;
         if (name == "Nguyễn Hiểu Lam" || name == "Nguyen Hieu Lam" || name == "hlam" || name == "nguyen hieu lam" || date_of_birth == "20/08/2008" || date_of_birth == "20-08-2008") {
                 cout << "Hi baby!" << endl;
-                cout << "I miss you so much!" << endl;
+                //cout << "I miss you so much!" << endl;
+                cout << "How many i_miss_you do u want baby: ";
+                cin >> n;
+                for (i = 0; i <= n; i++){ 
+                        cout << "I miss you so muchhhhhh"<< endl;
+                        Sleep(5);
+                }
                 cout << "This is a program made by NLVK" << endl;
                 system("pause");
                 return 0;
