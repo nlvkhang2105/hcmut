@@ -7,7 +7,7 @@ int main() {
         string name;
         string date_of_birth;
         short current_year;
-        int i, n;
+        int i1, i2, n;
         cout << "Please enter your name: ";
         getline(cin, name);
         cout << "Please enter your date of birth: ";
@@ -17,7 +17,7 @@ int main() {
                 //cout << "I miss you so much!" << endl;
                 cout << "How many i_miss_you do u want baby: ";
                 cin >> n;
-                for (i = 0; i <= n; i++){ 
+                for (i1 = 0; i1 <= n; i1++){ 
                         cout << "I miss you so muchhhhhh"<< endl;
                         Sleep(5);
                 }
@@ -29,6 +29,10 @@ int main() {
         cin >> current_year;  
         cout << "Name: " << name << endl << "Date of birth: " << date_of_birth << endl;
         cout << current_year << " - 2007 = " << current_year - 2007 << endl;
+        for (i2 = 0; i2 < 20; i2++){
+                cout << name << endl;
+                Sleep(10);
+        }
         system("pause");
         return 0;
 }
