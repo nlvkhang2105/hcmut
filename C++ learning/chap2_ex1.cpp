@@ -13,12 +13,6 @@ int main() {
     straw_choco = 0;
     matcha_choco = 0;
     dubai_choco = 0;
-    cout << "Enter the number of strawberry chocolates: ";
-    cin >> straw_choco;
-    cout << "Enter the number of matcha chocolates: ";
-    cin >> matcha_choco;
-    cout << "Enter the number of Dubai chocolates: ";
-    cin >> dubai_choco;
     sum_choco = straw_choco + matcha_choco + dubai_choco;
     cout << "The total number of chocolates Minh received is " << sum_choco << endl;
     sum_price = straw_choco * straw_choco_price + matcha_choco * matcha_choco_price + dubai_choco * dubai_choco_price;
