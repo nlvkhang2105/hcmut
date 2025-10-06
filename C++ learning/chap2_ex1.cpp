@@ -10,9 +10,9 @@ int main() {
     dubai_choco_price = 50000;
     sum_choco = 0;
     sum_price = 0;
-    straw_choco = 0;
-    matcha_choco = 0;
-    dubai_choco = 0;
+    straw_choco = 5;
+    matcha_choco = 3;
+    dubai_choco = 10;
     sum_choco = straw_choco + matcha_choco + dubai_choco;
     cout << "The total number of chocolates Minh received is " << sum_choco << endl;
     sum_price = straw_choco * straw_choco_price + matcha_choco * matcha_choco_price + dubai_choco * dubai_choco_price;
