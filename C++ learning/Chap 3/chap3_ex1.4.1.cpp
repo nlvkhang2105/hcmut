@@ -7,6 +7,6 @@ int main(){
     int b = 0; 
     int c = 2; 
     int d = 5;
-    cout << ( a++) -- << endl; 
-    cout << ++( a++);
+    //cout << ( a++) -- << endl; 
+    //cout << ++( a++);
 }
