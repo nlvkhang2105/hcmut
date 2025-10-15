@@ -21,8 +21,6 @@ int main(){
     cout << endl;
     width_name = starcount - (display_name.length() + name.length());
     width_age = starcount - (display_age.length() + age.length());
-    //cout << "*" << " " << "Name: " << name << setw(name.length() - ) << "*" << endl;
-    //cout << setw(0) << "*" << " " << "Age: " << age << setw(name.length()) << "*" << endl;
     cout << display_name << name << setw(width_name) << "*" << endl;
     cout << display_age << age << setw(width_age) << "*" << endl;
     cout << setw(0);
