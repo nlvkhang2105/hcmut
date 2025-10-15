@@ -6,5 +6,7 @@ int main(){
     float num;
     cout << "Input your number:";
     cin >> num;
-    cout << setw(8) << fixed << setprecision(1) << num << setw(8);
+    for(int rows = 0; rows <= 4; rows++){
+        
+    }
 }
