@@ -9,4 +9,5 @@ int main(){
     int d = 5;
     cout  << a << " " << ++a << " " << a++ << endl;
     cout << a;
+    return 0;
 }

@@ -8,4 +8,5 @@ int main(){
     int c = 2; 
     int d = ( a++) + ( a++); 
     cout << " d: " << d;
+    return 0;
 }

@@ -14,4 +14,5 @@ int main(){
     cout << "b = " << b << endl;
     cout << "c = " << c << endl;
     cout << "d = " << d << endl;
+    return 0;
 }

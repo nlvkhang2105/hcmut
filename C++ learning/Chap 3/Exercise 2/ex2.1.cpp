@@ -8,4 +8,5 @@ int main(){
     cout << 4 << " " << 5 << " " << 6 << endl;
     cout << 7 << " " << 8 << " " << 9 << " " << 10 << endl;
     system("pause");
+    return 0;
 }

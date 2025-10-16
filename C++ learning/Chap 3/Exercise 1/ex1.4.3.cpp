@@ -10,4 +10,5 @@ int main(){
     /*const*/ int a = 3; 
     a++;
     cout << "a: " << a;
+    return 0;
 }
