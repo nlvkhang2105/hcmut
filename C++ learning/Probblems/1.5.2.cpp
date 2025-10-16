@@ -19,6 +19,6 @@ int main(){
         cout << "You are a normal nigga";
     } else if (BMI >= 25.0 && BMI < 30.0){
         cout << "Please do some exercises";
-    } else (cout <<  "FATASS!!!");
+    } else (cout << "FATASS!!!");
     return 0;
 }
