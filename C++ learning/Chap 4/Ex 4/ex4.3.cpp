@@ -16,11 +16,11 @@ int main(){
         cout << "Your shape is a rectangle";
     } else if((a == c) && (b == d)){
         cout << "Your shape is an parralellogram";
-    } else if(a == 90 && b == 90 && ((c != 180 - a) || (c != 180 - b))){
+    } else if((a == 90 && b == 90 && (c + d == 180)) || (b == 90 && c == 90 && (a + d == 180)) || (c == 90 && d == 90 && (a + b == 180)) || (a == 90 && d == 90 && (b + c == 180))){
         cout << "Your shape is a right trapezoid";
-    } else if((b == c == 2 * b == 2 * c)){
+    } else if((a == d) && (b == c)){
         cout << "Your shape is an isosceles trapezoid";
-    } else if(a + b + c + d == 360){
+    } else if((a + c == 180) && (b + d == 180)){
         cout << "Your shape is an cylindrical quadrilateral";
     } else cout << "Your shape is an irregular quadrilateral";
     return 0;
