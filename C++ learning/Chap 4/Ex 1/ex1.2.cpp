@@ -4,7 +4,7 @@
 using namespace std;
 int main(){
     int wind = 130;
-    int pressure = 9.85;
+    int pressure = 985;
     int rain = 220;
     float river = 4.6;
     bool tide = true;
