@@ -1,0 +1,23 @@
+# Fdb version 4
+["pdflatex"] 1761737851.56852 "c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/test.tex" "test.pdf" "test" 1761737852.25571 0
+  "c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/test.tex" 1761737850 204 55ce4b87a560859350858ad12067ac22 ""
+  "c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1761708609 35752 024fb6c41858982481f6968b5fc26508 ""
+  "c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsbsy.sty" 1761708622 2222 27db7d52163edae53881b71ff62e754e ""
+  "c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsgen.sty" 1761708622 4173 1b3e76addfb8afcb47db4811d66e1dc6 ""
+  "c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsmath.sty" 1761708622 88401 0c3d1897569ad77cb9d8fb25b0bdf668 ""
+  "c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsopn.sty" 1761708622 4474 c510a88aa5f51b8c773b50a7ee92befd ""
+  "c:/texlive/2025/texmf-dist/tex/latex/amsmath/amstext.sty" 1761708622 2444 9983e1d0683f102e3b190c64a49313aa ""
+  "c:/texlive/2025/texmf-dist/tex/latex/base/article.cls" 1761727924 20144 b966087dda3b194755eb460d32e2ef75 ""
+  "c:/texlive/2025/texmf-dist/tex/latex/base/size10.clo" 1761727925 8448 686612a86f0e04f41ea577f5ec7e83d8 ""
+  "c:/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1761727832 30662 bfd6e864f4ffc5018b0e2b6260c3181c ""
+  "c:/texlive/2025/texmf-dist/web2c/texmf.cnf" 1761708230 42213 4e2ca030e8e2640502016e9e45868dcb ""
+  "c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1761736102 5574153 af86687748baf417d9e7d549313527be ""
+  "c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1761736324 3629593 3ec58735192b20c4299eb144b7ec7b61 ""
+  "c:/texlive/2025/texmf.cnf" 1761736080 713 e69b156964470283e0530f5060668171 ""
+  "test.aux" 1761737852 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "test.tex" 1761737850 204 55ce4b87a560859350858ad12067ac22 ""
+  (generated)
+  "test.aux"
+  "test.log"
+  "test.pdf"
+  (rewritten before read)
