@@ -12,7 +12,6 @@ int main(){
     cout << "Enter your age: ";
     cin >> age;
     string type = id_card.substr(6);
-    //cout << type << endl;
     if((type == "DISABLED") || (type == "CHILD" && age < 7) || (type == "ELDERLY" && age >= 60)){
         fare = BASE_FARE * 0.25;
     } else {

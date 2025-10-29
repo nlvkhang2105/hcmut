@@ -9,8 +9,6 @@ int main(){
     cin >> b;
     cout << "Please enter angle C of the quadrilateral: ";
     cin >> c;
-    //cout << "Please enter angle D of the quadrilateral: ";
-    //cin >> d;
     d = 360 - (a + b + c + d);
     if(a == 90 && b == 90 && c == 90 && d == 90){
         cout << "Your shape is a rectangle";
