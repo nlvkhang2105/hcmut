@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.29)  29 OCT 2025 18:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.29)  29 OCT 2025 18:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/test.tex
-(c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/test.tex
+**c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/Test/test.tex
+(c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/Test/test.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-10-24>
 (c:/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -109,6 +109,41 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 
 
+c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/Test/test.tex:11: LaTeX Error: Environment minted undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 \begin{minted}
+                   {cpp}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/Test/test.tex:12: You can't use `macro parameter character #' in horizontal mode.
+l.12     #
+          include<iostream>
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/Test/test.tex:19: LaTeX Error: \begin{document} ended by \end{minted}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19 \end{minted}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
 [1
 
 {c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./test.aux)
@@ -118,15 +153,15 @@ L3 programming layer <2025-10-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 1133 strings out of 467747
- 16916 string characters out of 5431120
- 433750 words of memory out of 5000000
- 29892 multiletter control sequences out of 15000+600000
+ 1136 strings out of 467747
+ 16996 string characters out of 5431120
+ 434750 words of memory out of 5000000
+ 29895 multiletter control sequences out of 15000+600000
  627721 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,5n,65p,246b,120s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 56i,5n,65p,251b,120s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on test.pdf (1 page, 16394 bytes).
+Output written on test.pdf (1 page, 18091 bytes).
 PDF statistics:
  13 PDF objects out of 1000 (max. 8388607)
  7 compressed objects within 1 object stream

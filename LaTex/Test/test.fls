@@ -1,8 +1,8 @@
-PWD c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex
+PWD c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/Test
 INPUT c:/texlive/2025/texmf.cnf
 INPUT c:/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/test.tex
+INPUT c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/Test/test.tex
 OUTPUT test.log
 INPUT c:/texlive/2025/texmf-dist/tex/latex/base/article.cls
 INPUT c:/texlive/2025/texmf-dist/tex/latex/base/article.cls

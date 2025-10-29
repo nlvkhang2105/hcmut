@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1761737851.56852 "c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/test.tex" "test.pdf" "test" 1761737852.25571 0
-  "c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/test.tex" 1761737850 204 55ce4b87a560859350858ad12067ac22 ""
+["pdflatex"] 1761738906.53561 "c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/Test/test.tex" "test.pdf" "test" 1761738907.23112 2
+  "c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/Test/test.tex" 1761738897 368 d67599c20ae2a45f7047d65765306047 ""
   "c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1761708609 35752 024fb6c41858982481f6968b5fc26508 ""
   "c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsbsy.sty" 1761708622 2222 27db7d52163edae53881b71ff62e754e ""
   "c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsgen.sty" 1761708622 4173 1b3e76addfb8afcb47db4811d66e1dc6 ""
@@ -14,8 +14,8 @@
   "c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1761736102 5574153 af86687748baf417d9e7d549313527be ""
   "c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1761736324 3629593 3ec58735192b20c4299eb144b7ec7b61 ""
   "c:/texlive/2025/texmf.cnf" 1761736080 713 e69b156964470283e0530f5060668171 ""
-  "test.aux" 1761737852 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "test.tex" 1761737850 204 55ce4b87a560859350858ad12067ac22 ""
+  "test.aux" 1761738907 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "test.tex" 1761738897 368 d67599c20ae2a45f7047d65765306047 ""
   (generated)
   "test.aux"
   "test.log"
