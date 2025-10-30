@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1761741138.62071 "c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/Test/test.tex" "test.pdf" "test" 1761741140.04445 2
+["pdflatex"] 1761741675.8421 "c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/Test/test.tex" "test.pdf" "test" 1761741676.84721 2
   "c:/Users/Admin/Documents/BK/Codes/hcmut/LaTex/Test/test.tex" 1761739774 389 fec6c20d13e0fefbde96f8a4997aab49 ""
   "c:/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1761724302 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm" 1761710679 768 1321e9409b4137d6fb428ac9dc956269 ""
@@ -44,7 +44,7 @@
   "c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1761736102 5574153 af86687748baf417d9e7d549313527be ""
   "c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1761736324 3629593 3ec58735192b20c4299eb144b7ec7b61 ""
   "c:/texlive/2025/texmf.cnf" 1761736080 713 e69b156964470283e0530f5060668171 ""
-  "test.aux" 1761741139 99 0a1c9a9bf2e2d6990dcda44bd5b8e7a6 "pdflatex"
+  "test.aux" 1761741676 99 0a1c9a9bf2e2d6990dcda44bd5b8e7a6 "pdflatex"
   "test.tex" 1761739774 389 fec6c20d13e0fefbde96f8a4997aab49 ""
   (generated)
   "_098F6BCD4621D373CADE4E832627B4F6.data.minted"
