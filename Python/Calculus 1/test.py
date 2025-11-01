@@ -1,28 +1,27 @@
 import math
 import re
-def trig(expression):
-    trig = r"arcsin|arccos|arctan"
-    number = r'\d+'
-    trignum = re.findall(number, expression)
-    trigex = re.findall(trig , expression)
-    print(trigex)
-    for x in trigex:
-        if x == "arccos":
-            y = math.acos(trignum[i])
-    print(trignum)
+def prepare(expr):
+    expr = expr.replace('ln', 'math.log')
+    expr = expr.replace('exp', 'math.exp')
+    expr = expr.replace('arcsin', 'math.asin')
+    expr = expr.replace('arccos', 'math.acos')
+    expr = expr.replace('arctan', 'math.atan')
+    expr = expr.replace('sinh', 'math.sinh')
+    expr = expr.replace('cosh', 'math.cosh')
+    expr = expr.replace('tanh', 'math.tanh')
+    expr = expr.replace('sin', 'math.sin')
+    expr = expr.replace('cos', 'math.cos')
+    expr = expr.replace('tan', 'math.tan')
+    expr = expr.replace('sqrt', 'math.sqrt')
+    expr = expr.replace('pi', 'math.pi')
+    expr = expr.replace('e', 'math.e')
+    return expr
+
 expression = input("Input your expression: ")
-expression_updated = expression
-match expression:
-    case _ if 'arcsin' in expression:
-        expression_updated = expression.replace("sin", "math.sin")
-print(expression_updated)
-print(eval(expression_updated))
-#if 'asin' in expression:
-#    raise TypeError("arcsin not asin")
-#if 'arccos' in expression:
-#    trig(expression)
-#if 'arcsin' in expression:
-#    trig(expression)
-#if 'arctan' in expression:
-#    trig(expression)
-#print(result)
+
+try:
+    expression = prepare(expression)
+    result = eval(expression)
+    print("OUTPUT: ", result)
+except Exception as e:
+    print("Error in expression: ", e)
