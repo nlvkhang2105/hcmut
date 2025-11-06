@@ -1,12 +1,18 @@
 #include<iostream>
+#include<math.h>
 
 using namespace std;
 int main(){
     int number;
     cout << "Enter a number: ";
     cin >> number;
-    if((number % 2 != 0) && (number % 3 != 0) && (number % 5 != 0) && (number % 7 != 0)){
-        cout << "It's a prime number";
-    } else cout << "NUH UH";
+    int i = 2;
+    while(i < sqrt(number)){
+        if(number % i == 0){
+            cout << "NUH UH";
+            return 1;
+        }
+        i++; 
+    }
     return 0;
 }
