@@ -1,29 +1,20 @@
-#include<iostream>
-#include<math.h>
+#include<bits/stdc++.h>
 
 using namespace std;
+bool checkprime(int number){
+    if(number < 2) return false;
+    for(int i = 2; i <= sqrt(number); i++){
+        if(number % i == 0){
+            return false;
+        }
+    } 
+    return true;
+} 
 int main(){
     int number;
-    int left;
-    int right;
-    int y;
-    cout << "Enter left limit: ";
-    cin >> left;
-    cout << "Enter right limit: ";
-    cin >> right;
-    int r = left;
-    //cout << "Enter a number: ";
-    //cin >> number;
-    int i = 2;
-    for(;left <= right; left++){
-        i = 2;
-        while(i < sqrt(r)){
-            if(r % i  0){
-                cout << r;
-                continue;
-            }
-            i++;
-        }
-    }
-    return 0;
+    cin >> number;
+    if(checkprime(number)){
+        cout << "Is a prime number";
+    } else cout << "Not a prime number";
+    return 0; 
 }
