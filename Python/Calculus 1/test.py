@@ -18,6 +18,7 @@ def prepare(expr):
     expr = re.sub(r'\bsqrt', 'math.sqrt', expr)
     expr = re.sub(r'\bpi', 'math.pi', expr)
     expr = re.sub(r'\be', 'math.e', expr)
+    expr = re.sub(r'\,', '.', expr)
     return expr
 expression = input("Input your expression: ")
 
