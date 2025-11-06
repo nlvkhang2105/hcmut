@@ -5,7 +5,7 @@ int main(){
     int number;
     cout << "Enter a number: ";
     cin >> number;
-    int factorial = number;
+    long long int factorial = number;
     int i = number;
     while( i > 1){
         --i;
