@@ -9,7 +9,7 @@ int main(){
         cout << "Input:";
         cin >> input;
         if(input != pass){
-            cout << "NUH UH";
+            cout << "NUH UH" << endl;
             attempt++;
         }
         if(input == pass){

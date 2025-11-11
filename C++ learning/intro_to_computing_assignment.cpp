@@ -45,7 +45,7 @@ int main(){
     } else if(adv < 60) {
         strat = "Retreat and regroup";
     } else strat = "Retreat and regroup";
-    cout << "[Scene 3] " << strat << " (adv = " << fixed << setprecision(1) << adv << ")" << endl;
+    cout << "[Scene 3] " << strat << " (adv = " << fixed << setprecision(1) << adv << ")" << "\n";
     double finalHP = bossHP - totalDamage; //scene 4 prerequisites
     string final;
     if(finalHP <= 0){
