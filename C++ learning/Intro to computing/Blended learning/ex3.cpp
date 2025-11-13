@@ -3,6 +3,15 @@
 #include<algorithm>
 
 using namespace std;
+void dectobin(int decimal){
+    int bin[10000];
+    int len = 0;
+    while(decimal > 0){
+        bin[len] = decimal % 2;
+        decimal /= 2;
+        len++;
+    }
+}
 int main(){
     int decimal;
     int binary;
@@ -18,11 +27,5 @@ int main(){
     } 
     cout << store << '\n';
     reverse(store.begin(),store.end());
-    for(int i = 0 ; i < store.length() ; i--){
-        out = store.substr(i);
-        if(out.substr(0,1) == to_string(1)){
-            cout << out << '\n';
-        }
-    } 
     return 0;
 }
