@@ -14,8 +14,8 @@ void dectobin(int decimal){
     }
     for(int i = len - 1; i >= 0; i--){
         out += to_string(bin[i]);
-        cout << "The binary form is: " << out << '\n';
     }
+    cout << "The binary form is: " << out << '\n';
 }
 int main(){
     int decimal;
