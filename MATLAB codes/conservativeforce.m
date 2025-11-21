@@ -10,7 +10,7 @@ x0 = input('Enter the initial position of the particle, x0 = ');
 n = input('Enter the number of steps, n = ');
 X = zeros(n+1, 1); V = zeros(n+1, 1); a = zeros(n+1, 1);
 U = zeros(n+1, 1); K = zeros(n+1, 1); T = zeros(n+1, 1);
-disp('Choose the potential energy reference position at x = 0');
+disp('Choosing the potential energy reference position at x = 0');
 F = k*x - 4*q*x^3;
 V(1) = v0; X(1) = x0; T(1) = 0;
 a(1) = double(subs(F, x, X(1)) / m);
