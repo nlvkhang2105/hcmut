@@ -1,4 +1,5 @@
 #include<iostream>
+#include<iomanip>
 using namespace std;
 
 int main(){
@@ -16,7 +17,7 @@ int main(){
         sum += quizScores[i];
     }
     double avg = (double)sum / 8;
-    cout << "Average: " << avg << '\n';
+    cout << "Average: " << fixed << setprecision(2) << avg << '\n';
     cout << "Aces: " << aces << '\n';
     cout << "Fails: " << fails << '\n';
     return 0;
