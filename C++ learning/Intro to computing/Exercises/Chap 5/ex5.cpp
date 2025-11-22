@@ -12,7 +12,7 @@ int main(){
     cout << "Enter the radar's effective range: ";
     cin >> r;
     int n;
-    cout << "Enter the number of objects to track:";
+    cout << "Enter the number of objects to track: ";
     cin >> n;
     if(n <= 0){
         cout << "Invalid number of objects";
@@ -21,28 +21,23 @@ int main(){
     double xCoords[n];
     double yCoords[n];
     for(int i = 0; i < n; i++){
-        cout << "Enter coordinates for object " << i << ":";
+        cout << "Enter coordinates for object " << i << ": ";
         cin >> xCoords[i] >> yCoords[i];
     }
     int inRangeCount = 0;
     double test;
+    int index[inRangeCount];
     for(int i = 0; i < n; i++){
         test = calculateDistance(0,0,xCoords[i],yCoords[i]);
         if(test <= r){
+            index[inRangeCount] = i;
             inRangeCount++;
         }
     }
-    char index[inRangeCount];
-    for(int i = 0; i < n; i++){
-        test = calculateDistance(0,0,xCoords[i],yCoords[i]);
-        if(test <= r){
-            index[i] = (char)i;
-        }
-    }
-    cout << "Total objects in range:" << inRangeCount << '\n';
+    cout << "Total objects in range: " << inRangeCount << '\n';
     cout << "Indexes of in range objects: ";
-    for(int i = 0; i < n; i++){
-        cout << index[i];
+    for(int i = 0; i < inRangeCount; i++){
+        cout << index[i] << " ";
     }
     return 0;
 }
