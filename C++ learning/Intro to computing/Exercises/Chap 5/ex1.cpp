@@ -7,6 +7,7 @@ int main(){
     int sum = 0;
     int aces = 0;
     int fails = 0;
+    cout << "Enter scores: ";
     for(int i = 0; i < 8; i++){
         cin >> quizScores[i];
         if(quizScores[i] == 10){
