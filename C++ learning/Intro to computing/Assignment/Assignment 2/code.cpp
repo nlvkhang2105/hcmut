@@ -66,73 +66,49 @@ int main(){
             case '\'':
                 pronounce += '\'';
         }
-        //bool vowelB4;
-        //bool vowelAft;
-        /*switch(word_in[i-1]){ //check vowel b4
-            case 'p': case 'k': case 'h': case 'l': case 'm': case 'n': case 'w':
-                vowelB4 = false;
-                break;
-            case 'a': case 'e': case 'i': case 'o': case 'u':
-                vowelB4 = true;
-                break;
-        }*/
-        bool group = false;
-        if(i + 1 < word_in.length()){//check vowel group
-            switch(word_in[i+1]){ 
-            case 'p': case 'k': case 'h': case 'l': case 'm': case 'n': case 'w': case ' ': case '\'': 
-                group = false;
-                break;
-            case 'a': case 'e': case 'i': case 'o': case 'u':
-                if(word_in[i] != word_in[i+1]){
-                    
-                } else group = false;
-                break;
-            default:
-                group = false;
-                break;
-        } 
-        if(!group){
-            if(i == word_in.length() || word_in[i+1] == ' '){
-                switch(word_in[i]){
-                    case 'a':
-                        pronounce += "ah";
-                        break;
-                    case 'e': 
-                        pronounce += "eh";
-                        break;
-                    case 'i':
-                        pronounce += "ee";
-                        break;
-                    case 'o':
-                        pronounce += "oh";
-                        break;
-                    case 'u':
-                        pronounce += "oo";
-                        break;
+        switch(test){
+            case 'a':
+                if (word_in[i+1] == 'i' || word_in[i+1] == 'e') {
+                    pronounce += "eye";
+                } else if (word_in[i+1] == 'o' || word_in[i+1] == 'u') {
+                    pronounce += "ow";
+                } else {
+                    pronounce += "ah";
                 }
-            }
-            if(i < word_in.length()){
-                switch(word_in[i]){
-                    case 'a':
-                        pronounce += "ah-";
-                        break;
-                    case 'e': 
-                        pronounce += "eh-";
-                        break;
-                    case 'i':
-                        pronounce += "ee-";
-                        break;
-                    case 'o':
-                        pronounce += "oh-";
-                        break;
-                    case 'u':
-                        pronounce += "oo-";
-                        break;
+                break;
+            case 'e':
+                if (word_in[i+1] == 'i') {
+                    pronounce += "ay";
+                } else if (word_in[i+1] == 'u') {
+                    pronounce += "eh-oo";
+                } else {
+                    pronounce += "eh";
                 }
-            }
+                break;
+            case 'i':
+                if (word_in[i+1] == 'u') {
+                    pronounce += "ew";
+                } else {
+                    pronounce += "ee";
+                }
+                break;
+            case 'o':
+                if (word_in[i+1] == 'i') {
+                    pronounce += "oy";
+                } else if(word_in[i+1] == 'u') {
+                    pronounce += "ow"; 
+                } else{
+                    pronounce += ;
+                }
+                break;
+            case 'u':
+                if (word_in[i+1] == 'i') {
+                    pronounce += "ooey";
+                } else{
+                    pronounce += 'oo';
+                }
+                break;
         }
-        }
-        
     }
     cout << word_origin << '\n';
     cout << pronounce << '\n';
