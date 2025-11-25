@@ -81,7 +81,10 @@ int main(){
                     group = true;
                 } else group = false;
                 break;
-        }
+            default:
+                group = false;
+                break;
+        } 
         }
         
     }
