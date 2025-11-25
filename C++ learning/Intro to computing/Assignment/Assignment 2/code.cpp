@@ -10,6 +10,7 @@ int main(){
     string alphabet[14] = {"a", "e", "i", "o", "u", "p", "k", "h", "l", "m", "n", "w", " ", "\'"};
     cout << "Enter your Hawaiian word: ";
     getline(cin, word_in);
+    string word_origin = word_in;
     transform(word_in.begin(), word_in.end(), word_in.begin(), [](unsigned char c){ return std::tolower(c); });
     for(int i = 0; i < word_in.length(); i++){ //check validity
         string test = word_in.substr(i,1);
@@ -18,7 +19,7 @@ int main(){
                 break;
             }
             if(j == 25){
-                cout << "Invalid character at " << test << '\n';
+                cout << word_origin << " contains invalid characters." << '\n';
                 return 0;
             }
         }
@@ -26,7 +27,7 @@ int main(){
     cout << "Valid" << '\n';
     for(int i = 0; i < word_in.length(); i++){
         char test = word_in[i];
-        switch(test){ //check consonants
+        switch(test){ //check consonants ans special characters
             case 'p':
                 pronounce += 'p';
                 break;
@@ -59,6 +60,10 @@ int main(){
                 }
                 }
                 break;
+            case ' ':
+                pronounce += ' ';
+            case '\'':
+                pronounce += '\'';
         }
         //bool vowelB4;
         //bool vowelAft;
@@ -85,9 +90,13 @@ int main(){
                 group = false;
                 break;
         } 
+        if(!group){
+            
+        }
         }
         
     }
-    cout << word_in;
+    cout << word_origin << '\n';
+    cout << pronounce << '\n';
     return 0;
 }
