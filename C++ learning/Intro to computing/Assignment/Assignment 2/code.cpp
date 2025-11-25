@@ -71,8 +71,8 @@ int main(){
                 break;
         }*/
         bool group = false;
-        if(i + 1 < word_in.length()){
-            switch(word_in[i+1]){ //check vowel group
+        if(i + 1 < word_in.length()){//check vowel group
+            switch(word_in[i+1]){ 
             case 'p': case 'k': case 'h': case 'l': case 'm': case 'n': case 'w': 
                 group = false;
                 break;
