@@ -8,13 +8,14 @@ int main(){
     string word_in;
     string pronounce;
     string alphabet[14] = {"a", "e", "i", "o", "u", "p", "k", "h", "l", "m", "n", "w", " ", "\'"};
+    unsigned int i;
     cout << "Enter your Hawaiian word: ";
     getline(cin, word_in);
     string word_origin = word_in;
     transform(word_in.begin(), word_in.end(), word_in.begin(), [](unsigned char c){ return std::tolower(c); });
-    for(int i = 0; i < word_in.length(); i++){ //check validity
+    for(i = 0; i < word_in.length(); i++){ //check validity
         string test = word_in.substr(i,1);
-        for(int j = 0; j < 26; j++){
+        for(unsigned int j = 0; j < 26; j++){
             if(test == alphabet[j]){
                 break;
             }
@@ -25,9 +26,9 @@ int main(){
         }
     }
     cout << "Valid" << '\n';
-    for(int i = 0; i < word_in.length(); i++){
+    for(i = 0; i < word_in.length(); i++){
         char test = word_in[i];
-        switch(test){ //check consonants ans special characters
+        switch(test){ //check consonants and special characters
             case 'p':
                 pronounce += 'p';
                 break;
@@ -78,12 +79,12 @@ int main(){
         bool group = false;
         if(i + 1 < word_in.length()){//check vowel group
             switch(word_in[i+1]){ 
-            case 'p': case 'k': case 'h': case 'l': case 'm': case 'n': case 'w': 
+            case 'p': case 'k': case 'h': case 'l': case 'm': case 'n': case 'w': case ' ': case '\'': 
                 group = false;
                 break;
             case 'a': case 'e': case 'i': case 'o': case 'u':
                 if(word_in[i] != word_in[i+1]){
-                    group = true;
+                    
                 } else group = false;
                 break;
             default:
@@ -91,7 +92,44 @@ int main(){
                 break;
         } 
         if(!group){
-            
+            if(i == word_in.length() || word_in[i+1] == ' '){
+                switch(word_in[i]){
+                    case 'a':
+                        pronounce += "ah";
+                        break;
+                    case 'e': 
+                        pronounce += "eh";
+                        break;
+                    case 'i':
+                        pronounce += "ee";
+                        break;
+                    case 'o':
+                        pronounce += "oh";
+                        break;
+                    case 'u':
+                        pronounce += "oo";
+                        break;
+                }
+            }
+            if(i < word_in.length()){
+                switch(word_in[i]){
+                    case 'a':
+                        pronounce += "ah-";
+                        break;
+                    case 'e': 
+                        pronounce += "eh-";
+                        break;
+                    case 'i':
+                        pronounce += "ee-";
+                        break;
+                    case 'o':
+                        pronounce += "oh-";
+                        break;
+                    case 'u':
+                        pronounce += "oo-";
+                        break;
+                }
+            }
         }
         }
         
