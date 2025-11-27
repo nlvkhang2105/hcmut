@@ -9,7 +9,6 @@ int main(){
     string pronounce;
     string alphabet[14] = {"a", "e", "i", "o", "u", "p", "k", "h", "l", "m", "n", "w", " ", "\'"};
     unsigned int i;
-    bool group = false;
     cout << "Enter your Hawaiian word: ";
     getline(cin, word_in);
     string word_origin = word_in;
@@ -26,9 +25,9 @@ int main(){
             }
         }
     }
-    cout << "Valid" << '\n';
     for(i = 0; i < word_in.length(); i++){
         char test = word_in[i];
+        bool group = false;
         switch(test){ //check consonants and special characters
             case 'p':
                 pronounce += 'p';
@@ -64,8 +63,10 @@ int main(){
                 break;
             case ' ':
                 pronounce += ' ';
+                break;
             case '\'':
                 pronounce += '\'';
+                break;
         }
         switch(test){
             case 'a':
