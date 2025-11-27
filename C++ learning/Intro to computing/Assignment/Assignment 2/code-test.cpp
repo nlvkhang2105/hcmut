@@ -1,116 +1,44 @@
-#include <iostream>
-#include <string>
-#include <unordered_map>
+#include<iostream>
+#include<string>
+#include <algorithm>
 #include <cctype>
+using namespace std;
 
-std::string validHawaiianword() {
-    bool valid = true;
-    std::string word;
+int main(){
+    unsigned int i;
+    string word_in;
+getline(cin, word_in);
+    
+    string word_origin = word_in; // Save original for printing later
 
-    while (valid) {
-        std::cout << "Enter a hawaiian word to pronounce: ";
-        std::getline(std::cin, word);
+    // ==========================================
+    // STEP 1: CLEANING LOOP (The Fix)
+    // Converts 2-byte characters (ã, â) into 1-byte 'a'
+    // ==========================================
+    string clean_builder = "";
+    
+    // Use size_t for the loop to satisfy Web Coderunners
+    for(size_t i = 0; i < word_in.length(); i++){
+        unsigned char c = (unsigned char)word_in[i];
 
-        int countletters = 0;
-        for (char letter : word) {
-            if (std::string("aeioupkhlmnw' ").find(letter) != std::string::npos) {
-                countletters++;
+        // Check for the UTF-8 "Lead Byte" 195 (which starts ã and â)
+        if (c == 195 && i + 1 < word_in.length()) {
+            unsigned char next = (unsigned char)word_in[i+1];
+            
+            // 163 is the second half of 'ã', 162 is the second half of 'â'
+            if (next == 163 || next == 162) { 
+                clean_builder += 'a'; 
+                i++; // SKIP the next byte because we just handled it
+                continue;
             }
         }
-
-        if (countletters == (int)word.size()) {
-            valid = false;
-        } else {
-            valid = true;
-        }
+        
+        // If it's not a special char, just keep it
+        clean_builder += word_in[i];
     }
-
-    return word;
-}
-
-std::string hawaiian_pronuncer() {
-    std::string word = validHawaiianword();
-
-    // convert to lowercase
-    for (char &c : word) {
-        c = std::tolower(c);
-    }
-
-    if (word.find("iw") != std::string::npos || word.find("ew") != std::string::npos) {
-        for (char &c : word) {
-            if (c == 'w') c = 'v';
-        }
-    }
-    if (word.find("uw") != std::string::npos || word.find("ow") != std::string::npos) {
-        // word = word.replace('w', 'w') does nothing, so no change needed
-    }
-
-    std::unordered_map<std::string, std::string> grpVowels = {
-        {"ai", "eye-"}, {"ae", "eye-"}, {"ao", "ow-"}, {"au", "ow-"}, {"ua", "oo-ah-"},
-        {"ei", "ay-"}, {"eu", "eh-oo-"}, {"iu", "ew-"}, {"oi", "oyo-"}, {"ou", "ow-"}, {"ui", "ooey-"}
-    };
-    std::unordered_map<char, std::string> vowels = {
-        {'a', "ah-"}, {'e', "eh-"}, {'i', "ee-"}, {'o', "oh-"}, {'u', "oo-"}
-    };
-
-    std::string new_word = "";
-
-    for (size_t index = 0; index < word.size(); ++index) {
-        char current = word[index];
-
-        // for consonants
-        if (std::string("pkhlmnvw' ").find(current) != std::string::npos) {
-            new_word += current;
-        }
-
-        // for vowels
-        if (std::string("aeiou").find(current) != std::string::npos) {
-            // for grouped vowels
-            if ((index + 1) < word.size() && std::string("aeiou").find(word[index + 1]) != std::string::npos) {
-                std::string grp = "";
-                grp += current;
-                grp += word[index + 1];
-                if (grpVowels.find(grp) != grpVowels.end()) {
-                    new_word += grpVowels[grp];
-                } else {
-                    for (char ch : grp) {
-                        new_word += vowels[ch];
-                    }
-                }
-            }
-
-            // for single vowels
-            if (index > 0 && std::string("aeiou").find(word[index - 1]) == std::string::npos && std::string("aeiou").find(current) != std::string::npos) {
-                if ((index + 1) < word.size() && std::string("aeiou").find(word[index + 1]) == std::string::npos) {
-                    new_word += vowels[current];
-                }
-            }
-
-            // for last letter
-            if (index == word.size() - 1 && index > 0 && std::string("aeiou").find(word[index - 1]) == std::string::npos) {
-                if (std::string("pkhlmnvw'").find(current) != std::string::npos) {
-                    new_word += current;
-                }
-                if (std::string("aeiou").find(current) != std::string::npos) {
-                    new_word += vowels[current];
-                }
-            }
-
-            // for first letter
-            if (index == 0 && std::string("aeiou").find(current) != std::string::npos) {
-                new_word += vowels[current];
-            }
-        }
-    }
-
-    if (!new_word.empty()) {
-        new_word[0] = std::toupper(new_word[0]);
-    }
-
-    return new_word;
-}
-
-int main() {
-    std::cout << hawaiian_pronuncer() << std::endl;
+    
+    // Update the main variable to the clean version
+    word_in = clean_builder;
+    cout << word_in;
     return 0;
 }
