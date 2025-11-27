@@ -9,6 +9,7 @@ int main(){
     string pronounce;
     string alphabet[14] = {"a", "e", "i", "o", "u", "p", "k", "h", "l", "m", "n", "w", " ", "\'"};
     unsigned int i;
+    bool group = false;
     cout << "Enter your Hawaiian word: ";
     getline(cin, word_in);
     string word_origin = word_in;
@@ -70,8 +71,10 @@ int main(){
             case 'a':
                 if (word_in[i+1] == 'i' || word_in[i+1] == 'e') {
                     pronounce += "eye";
+                    group = true;
                 } else if (word_in[i+1] == 'o' || word_in[i+1] == 'u') {
                     pronounce += "ow";
+                    group = true;
                 } else {
                     pronounce += "ah";
                 }
@@ -79,8 +82,10 @@ int main(){
             case 'e':
                 if (word_in[i+1] == 'i') {
                     pronounce += "ay";
+                    group = true;
                 } else if (word_in[i+1] == 'u') {
                     pronounce += "eh-oo";
+                    group = true;
                 } else {
                     pronounce += "eh";
                 }
@@ -88,6 +93,7 @@ int main(){
             case 'i':
                 if (word_in[i+1] == 'u') {
                     pronounce += "ew";
+                    group = true;
                 } else {
                     pronounce += "ee";
                 }
@@ -95,19 +101,28 @@ int main(){
             case 'o':
                 if (word_in[i+1] == 'i') {
                     pronounce += "oy";
+                    group = true;
                 } else if(word_in[i+1] == 'u') {
                     pronounce += "ow"; 
+                    group = true;
                 } else{
-                    pronounce += ;
+                    pronounce += "oh";
                 }
                 break;
             case 'u':
                 if (word_in[i+1] == 'i') {
                     pronounce += "ooey";
+                    group = true;
                 } else{
-                    pronounce += 'oo';
+                    pronounce += "oo";
                 }
                 break;
+        }
+        if (i + 1 < word_in.length() && word_in[i+1] != ' ' && word_in[i+1] != '\'' && test != 'p' && test != 'k' && test != 'h' && test != 'l' && test != 'm' && test != 'n' && test != 'w') {
+            pronounce += "-";
+        }
+        if (group) {
+            i++;
         }
     }
     cout << word_origin << '\n';
