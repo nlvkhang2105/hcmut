@@ -7,14 +7,11 @@ using namespace std;
 int main(){
     string word_in;
     string pronounce;
-    string alphabet[14] = {"a", "e", "i", "o", "u", "p", "k", "h", "l", "m", "n", "w", " ", "\'"};
+    string alphabet[16] = {"â","ã","a", "e", "i", "o", "u", "p", "k", "h", "l", "m", "n", "w", " ", "\'"};
     unsigned int i;
     getline(cin, word_in);
-    string word_origin = word_in;
     transform(word_in.begin(), word_in.end(), word_in.begin(), [](unsigned char c){ return std::tolower(c); });
-    for(i = 0; i < word_in.length(); i++){
-        
-    }
+    string word_origin = word_in;
     for(i = 0; i < word_in.length(); i++){ //check validity
         string test = word_in.substr(i,1);
         for(int j = 0; j < 16; j++){
@@ -71,7 +68,7 @@ int main(){
                 break;
         }
         switch(test){
-            case 'a':
+            case 'a': case 'â': case 'ã':
                 if (word_in[i+1] == 'i' || word_in[i+1] == 'e') {
                     pronounce += "eye";
                     group = true;
