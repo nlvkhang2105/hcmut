@@ -12,13 +12,16 @@ int main(){
     getline(cin, word_in);
     string word_origin = word_in;
     transform(word_in.begin(), word_in.end(), word_in.begin(), [](unsigned char c){ return std::tolower(c); });
+    for(i = 0; i < word_in.length(); i++){
+        
+    }
     for(i = 0; i < word_in.length(); i++){ //check validity
         string test = word_in.substr(i,1);
-        for(unsigned int j = 0; j < 16; j++){
+        for(int j = 0; j < 16; j++){
             if(test == alphabet[j]){
                 break;
             }
-            if(j == 25){
+            if(j == 15){
                 cout << word_origin << " contains invalid characters." << '\n';
                 return 0;
             }
