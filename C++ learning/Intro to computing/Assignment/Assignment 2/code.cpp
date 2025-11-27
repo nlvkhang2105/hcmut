@@ -9,13 +9,12 @@ int main(){
     string pronounce;
     string alphabet[14] = {"a", "e", "i", "o", "u", "p", "k", "h", "l", "m", "n", "w", " ", "\'"};
     unsigned int i;
-    cout << "Enter your Hawaiian word: ";
     getline(cin, word_in);
     string word_origin = word_in;
     transform(word_in.begin(), word_in.end(), word_in.begin(), [](unsigned char c){ return std::tolower(c); });
     for(i = 0; i < word_in.length(); i++){ //check validity
         string test = word_in.substr(i,1);
-        for(unsigned int j = 0; j < 26; j++){
+        for(unsigned int j = 0; j < 16; j++){
             if(test == alphabet[j]){
                 break;
             }
