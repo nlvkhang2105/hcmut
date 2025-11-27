@@ -7,18 +7,18 @@ using namespace std;
 int main(){
     string word_in;
     string pronounce;
-    string alphabet[16] = {"â","ã","a", "e", "i", "o", "u", "p", "k", "h", "l", "m", "n", "w", " ", "\'"};
+    string alphabet[14] = {"a", "e", "i", "o", "u", "p", "k", "h", "l", "m", "n", "w", " ", "\'"};
     unsigned int i;
     getline(cin, word_in);
     transform(word_in.begin(), word_in.end(), word_in.begin(), [](unsigned char c){ return std::tolower(c); });
     string word_origin = word_in;
     for(i = 0; i < word_in.length(); i++){ //check validity
         string test = word_in.substr(i,1);
-        for(int j = 0; j < 16; j++){
+        for(int j = 0; j < 14; j++){
             if(test == alphabet[j]){
                 break;
             }
-            if(j == 15){
+            if(j == 13){
                 cout << word_origin << " contains invalid characters." << '\n';
                 return 0;
             }
@@ -68,60 +68,50 @@ int main(){
                 break;
         }
         switch(test){
-            case 'a': case 'â': case 'ã':
-                if (word_in[i+1] == 'i' || word_in[i+1] == 'e') {
-                    pronounce += "eye";
-                    group = true;
-                } else if (word_in[i+1] == 'o' || word_in[i+1] == 'u') {
-                    pronounce += "ow";
-                    group = true;
-                } else {
-                    pronounce += "ah";
-                }
+            case 'a':
+                if (i+1 < word_in.length() && (word_in[i+1] == 'i' || word_in[i+1] == 'e')) {
+                    pronounce += "eye"; group = true;
+                } else if (i+1 < word_in.length() && (word_in[i+1] == 'o' || word_in[i+1] == 'u')) {
+                    pronounce += "ow"; group = true;
+                } else { pronounce += "ah"; }
                 break;
             case 'e':
-                if (word_in[i+1] == 'i') {
-                    pronounce += "ay";
-                    group = true;
-                } else if (word_in[i+1] == 'u') {
-                    pronounce += "eh-oo";
-                    group = true;
-                } else {
-                    pronounce += "eh";
-                }
+                if (i+1 < word_in.length() && word_in[i+1] == 'i') {
+                    pronounce += "ay"; group = true;
+                } else if (i+1 < word_in.length() && word_in[i+1] == 'u') {
+                    pronounce += "eh-oo"; group = true;
+                } else { pronounce += "eh"; }
                 break;
             case 'i':
-                if (word_in[i+1] == 'u') {
-                    pronounce += "ew";
-                    group = true;
-                } else {
-                    pronounce += "ee";
-                }
+                if (i+1 < word_in.length() && word_in[i+1] == 'u') {
+                    pronounce += "ew"; group = true;
+                } else { pronounce += "ee"; }
                 break;
             case 'o':
-                if (word_in[i+1] == 'i') {
-                    pronounce += "oy";
-                    group = true;
-                } else if(word_in[i+1] == 'u') {
-                    pronounce += "ow"; 
-                    group = true;
-                } else{
-                    pronounce += "oh";
-                }
+                if (i+1 < word_in.length() && word_in[i+1] == 'i') {
+                    pronounce += "oy"; group = true;
+                } else if(i+1 < word_in.length() && word_in[i+1] == 'u') {
+                    pronounce += "ow"; group = true;
+                } else{ pronounce += "oh"; }
                 break;
             case 'u':
-                if (word_in[i+1] == 'i') {
-                    pronounce += "ooey";
-                    group = true;
-                } else{
-                    pronounce += "oo";
-                }
+                if (i+1 < word_in.length() && word_in[i+1] == 'i') {
+                    pronounce += "ooey"; group = true;
+                } else{ pronounce += "oo"; }
                 break;
         }
+
         if (group) {
             i++;
         }
-        if (i + 1 < word_in.length() && word_in[i+1] != ' ' && word_in[i+1] != '\'' && word_in[i] != ' ' && word_in[i] != '\'' && test != 'p' && test != 'k' && test != 'h' && test != 'l' && test != 'm' && test != 'n' && test != 'w') {
+        
+        // Hyphen Logic
+        if (i + 1 < word_in.length() && 
+            word_in[i+1] != ' ' && 
+            word_in[i+1] != '\'' && 
+            test != ' ' && 
+            test != '\'' && 
+            string("pkhlmnw").find(test) == string::npos) {
             pronounce += "-";
         }
     }
