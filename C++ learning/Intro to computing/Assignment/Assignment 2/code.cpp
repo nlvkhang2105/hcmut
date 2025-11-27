@@ -119,14 +119,13 @@ int main(){
                 }
                 break;
         }
-        if (i + 1 < word_in.length() && word_in[i+1] != ' ' && word_in[i+1] != '\'' && test != 'p' && test != 'k' && test != 'h' && test != 'l' && test != 'm' && test != 'n' && test != 'w') {
-            pronounce += "-";
-        }
         if (group) {
             i++;
         }
+        if (i + 1 < word_in.length() && word_in[i+1] != ' ' && word_in[i+1] != '\'' && word_in[i] != ' ' && word_in[i] != '\'' && test != 'p' && test != 'k' && test != 'h' && test != 'l' && test != 'm' && test != 'n' && test != 'w') {
+            pronounce += "-";
+        }
     }
-    cout << word_origin << '\n';
     cout << pronounce << '\n';
     return 0;
 }
