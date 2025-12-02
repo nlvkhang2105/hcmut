@@ -10,8 +10,8 @@ int main(){
     string alphabet[14] = {"a", "e", "i", "o", "u", "p", "k", "h", "l", "m", "n", "w", " ", "\'"};
     unsigned int i;
     getline(cin, word_in);
-    transform(word_in.begin(), word_in.end(), word_in.begin(), [](unsigned char c){ return std::tolower(c); });
     string word_origin = word_in;
+    transform(word_in.begin(), word_in.end(), word_in.begin(), [](unsigned char c){ return std::tolower(c); });
     for(i = 0; i < word_in.length(); i++){ //check validity
         string test = word_in.substr(i,1);
         for(int j = 0; j < 14; j++){
@@ -51,7 +51,7 @@ int main(){
                     pronounce += 'w';
                 } else{
                     switch(word_in[i-1]){
-                    case 'a': case 'u': case 'o':
+                    case 'a': case 'u': case 'o': case ' ':
                     pronounce += 'w';
                     break;
                     case 'i': case 'e':
@@ -104,8 +104,6 @@ int main(){
         if (group) {
             i++;
         }
-        
-        // Hyphen Logic
         if (i + 1 < word_in.length() && 
             word_in[i+1] != ' ' && 
             word_in[i+1] != '\'' && 
