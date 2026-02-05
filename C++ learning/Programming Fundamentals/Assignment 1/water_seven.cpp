@@ -21,10 +21,9 @@ bool readInput(
             string test;
             ss >> test;
             if(test == "GOING_MERRY"){
-                ss >> test >> shipHP >> repairCost;
+                inFile >> test >> shipHP >> repairCost;
             } else {
-                ss >> test >> hp[i] >> skill[i];
-                strcpy(character[i],test.c_str());
+                inFile >> character[i] >> hp[i] >> skill[i];
             }
             i++;
         }
