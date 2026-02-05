@@ -22,9 +22,9 @@ bool readInput(
             ss >> test;
             if(test == "GOING_MERRY"){
                 inFile >> test >> shipHP >> repairCost;
-            } else {
-                inFile >> character[i] >> hp[i] >> skill[i];
+                continue;
             }
+            inFile >> character[i] >> hp[i] >> skill[i];
             i++;
         }
         inFile.close();
