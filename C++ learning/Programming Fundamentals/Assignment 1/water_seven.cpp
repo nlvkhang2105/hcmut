@@ -17,10 +17,20 @@ bool readInput(
         string line;
         int i = 0;
         while(getline(inFile,line)){
-            
+            stringstream ss(line);
+            string test;
+            ss >> test;
+            if(test == "GOING_MERRY"){
+                ss >> test >> shipHP >> repairCost;
+            } else {
+                ss >> test >> hp[i] >> skill[i];
+                strcpy(character[i],test.c_str());
+            }
             i++;
         }
-
+        for(int i = 0; i < FIXED_CHARACTER; i++){
+            cout << character[i] << char(32) << hp[i] << char(32) << skill[i] << '\n'; 
+        }
         inFile.close();
         return false;
 }
