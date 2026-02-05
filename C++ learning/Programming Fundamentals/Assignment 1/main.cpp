@@ -12,8 +12,22 @@
 
 using namespace std;
 
-
-
 int main(int argc, const char * argv[]) {
+    char character[FIXED_CHARACTER][MAX_NAME];
+    int hp[FIXED_CHARACTER];
+    int skill[FIXED_CHARACTER];
+    int shipHP;
+    int repairCost;
+    if(argc < 2){
+        cout << "Input file missing" << '\n';
+        return 1;
+    }
+    bool can_run = readInput(argv[1], character, hp, skill, shipHP, repairCost);
+    // Check task 0
+    cout << "Task 0 results:" << '\n';
+    cout << can_run << '\n';
+    for(int i = 0; i < FIXED_CHARACTER; i++){
+        cout << character[i] << char(32) << hp[i] << char(32) << skill[i] << '\n'; 
+    }
     return 0;
 }

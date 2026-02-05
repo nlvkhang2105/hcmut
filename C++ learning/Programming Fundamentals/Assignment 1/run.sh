@@ -1,1 +1,1 @@
-g++ -o main main.cpp water_seven.cpp -I . -std=c++11 && ./main
+g++ -o main main.cpp water_seven.cpp -I . -std=c++11 && ./main opw_tc_01_input

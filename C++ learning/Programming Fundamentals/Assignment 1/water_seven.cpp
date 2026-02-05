@@ -10,7 +10,7 @@ bool readInput(
     const string &filename,
     char character[FIXED_CHARACTER][MAX_NAME], int hp[FIXED_CHARACTER], 
     int skill[FIXED_CHARACTER], int &shipHP, int &repairCost){
-        ifstream inFile("./opw_tc_01_input");
+        ifstream inFile("opw_tc_01_input");
         if(!inFile){
             return false;
         }
@@ -28,11 +28,8 @@ bool readInput(
             }
             i++;
         }
-        for(int i = 0; i < FIXED_CHARACTER; i++){
-            cout << character[i] << char(32) << hp[i] << char(32) << skill[i] << '\n'; 
-        }
         inFile.close();
-        return false;
+        return true;
 }
 
 
