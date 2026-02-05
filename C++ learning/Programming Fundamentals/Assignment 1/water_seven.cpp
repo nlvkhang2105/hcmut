@@ -10,7 +10,7 @@ bool readInput(
     const string &filename,
     char character[FIXED_CHARACTER][MAX_NAME], int hp[FIXED_CHARACTER], 
     int skill[FIXED_CHARACTER], int &shipHP, int &repairCost){
-        ifstream inFile("opw_tc_01_input");
+        ifstream inFile(filename);
         if(!inFile){
             return false;
         }
@@ -21,10 +21,12 @@ bool readInput(
             string test;
             ss >> test;
             if(test == "GOING_MERRY"){
-                inFile >> test >> shipHP >> repairCost;
+                ss >> shipHP >> repairCost;
                 continue;
+            }else {
+                strcpy(character[i],test.c_str());
+                ss >> hp[i] >> skill[i];
             }
-            inFile >> character[i] >> hp[i] >> skill[i];
             i++;
         }
         inFile.close();
