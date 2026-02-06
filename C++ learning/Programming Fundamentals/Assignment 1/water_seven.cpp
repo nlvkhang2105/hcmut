@@ -24,8 +24,18 @@ bool readInput(
                 ss >> shipHP >> repairCost;
                 continue;
             }else {
-                strcpy(character[i],test.c_str());
-                ss >> hp[i] >> skill[i];
+                bool duplicate = 0;
+                for(int j = 0; j < i; j++){
+                    string temp = character[j];
+                    if(test == temp){
+                        duplicate = 1;
+                        break;
+                    }
+                }
+                if(!duplicate){
+                    strcpy(character[i],test.c_str());
+                    ss >> hp[i] >> skill[i];
+                }
             }
             i++;
         }
