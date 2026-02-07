@@ -24,6 +24,7 @@ int main(int argc, const char * argv[]) {
         return 1;
     }
     // Check task 0
+    cout << "----------TASK 0----------\n"; 
     bool can_run = readInput(argv[1], character, hp, skill, shipHP, repairCost);
     cout << "Task 0 results:" << '\n';
     cout << (can_run? "Can run" : "Can't run") << '\n';
@@ -35,7 +36,11 @@ int main(int argc, const char * argv[]) {
         cout << character[i] << char(32) << hp[i] << char(32) << skill[i] << '\n'; 
     }
     cout << "Going Merry: " << shipHP << char(32) << repairCost << '\n';
+    cout << "----------END TASK 0----------\n\n";
     // Check task 1
-    
+    cout << "----------TASK 1----------\n";
+    cout << shipHP << '\n';
+    cout << "The repair cost for the ship is: " << damageEvaluation(shipHP,repairCost) << '\n';
+    cout << "----------END TASK 1----------\n\n";
     return 0;
 }

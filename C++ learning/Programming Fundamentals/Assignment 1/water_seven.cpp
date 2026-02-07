@@ -65,7 +65,23 @@ bool readInput(
 
 // Task 1
 int damageEvaluation(int shipHP, int repairCost){
-    return 0;
+    int sum = 0;
+    bool perfNum = false;
+    for(int i = 1; i < sqrt(shipHP); i++){
+        if(shipHP % i == 0){
+            if(i * i != shipHP){
+                sum = sum + i + shipHP / i;
+            } else sum +=i;
+        }
+    }
+    if(sum == shipHP){
+        perfNum = true;
+        cout << "ShipHP is a perfect number" << '\n';
+    } else cout << "ShipHP is not a perfect number" << '\n';
+    if(perfNum && shipHP < 455){
+        repairCost = ((repairCost + repairCost*0.5) * 3 + 1) / 2;
+        return repairCost;
+    } else return repairCost;
 }
 
 // Task 2
