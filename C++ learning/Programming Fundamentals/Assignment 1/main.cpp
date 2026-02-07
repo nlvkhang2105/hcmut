@@ -18,18 +18,24 @@ int main(int argc, const char * argv[]) {
     int skill[FIXED_CHARACTER];
     int shipHP;
     int repairCost;
+    cout << FIXED_CHARACTER << '\n';
     if(argc < 2){
         cout << "Input file missing" << '\n';
         return 1;
     }
-    bool can_run = readInput(argv[1], character, hp, skill, shipHP, repairCost);
     // Check task 0
+    bool can_run = readInput(argv[1], character, hp, skill, shipHP, repairCost);
     cout << "Task 0 results:" << '\n';
     cout << (can_run? "Can run" : "Can't run") << '\n';
     cout << "Characters: " << '\n';
     for(int i = 0; i < FIXED_CHARACTER; i++){
+        if(character[i][0]=='\0'){
+            continue;
+        }
         cout << character[i] << char(32) << hp[i] << char(32) << skill[i] << '\n'; 
     }
     cout << "Going Merry: " << shipHP << char(32) << repairCost << '\n';
+    // Check task 1
+    
     return 0;
 }

@@ -20,26 +20,44 @@ bool readInput(
             stringstream ss(line);
             string test;
             ss >> test;
+            if(test.empty()) continue;
             if(test == "GOING_MERRY"){
                 ss >> shipHP >> repairCost;
                 continue;
             }else {
-                bool duplicate = 0;
+                int tempHP, tempSkill;
+                ss >> tempHP >> tempSkill;
+                if(tempHP < 0) tempHP = 0;
+                if(tempHP > 1000) tempHP = 1000;
+                if(tempSkill < 0) tempSkill = 0;
+                if(tempSkill > 100) tempSkill = 100;
+                int duplicate = -1;
                 for(int j = 0; j < i; j++){
                     string temp = character[j];
                     if(test == temp){
-                        duplicate = 1;
+                        duplicate = j;
                         break;
-                    }
+                    }   
                 }
-                if(!duplicate){
+                if(duplicate == -1){
                     strcpy(character[i],test.c_str());
-                    ss >> hp[i] >> skill[i];
+                    hp[i] = tempHP;
+                    skill[i] = tempSkill;
+                    i++;
+                } else {
+                    cout << "Character " << test << " exists, moving on..." << '\n';
+                    hp[duplicate] = tempHP;
+                    skill[duplicate] = tempSkill;
+                    continue;
                 }
             }
-            i++;
         }
         inFile.close();
+        for (int k = i; k < FIXED_CHARACTER; k++) {
+            character[k][0] = '\0'; 
+            hp[k] = 0;
+            skill[k] = 0;
+        }
         return true;
 }
 
