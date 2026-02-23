@@ -39,7 +39,6 @@ int main(int argc, const char * argv[]) {
     cout << "----------END TASK 0----------\n\n";
     // Check task 1
     cout << "----------TASK 1----------\n";
-    cout << shipHP << '\n';
     cout << "The repair cost for the ship is: " << damageEvaluation(shipHP,repairCost) << '\n';
     cout << "----------END TASK 1----------\n\n";
     return 0;

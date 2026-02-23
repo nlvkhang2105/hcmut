@@ -23,6 +23,10 @@ bool readInput(
             if(test.empty()) continue;
             if(test == "GOING_MERRY"){
                 ss >> shipHP >> repairCost;
+                if(shipHP < 0) shipHP = 0;
+                if(shipHP > 1000) shipHP = 1000;
+                if(repairCost < 0) repairCost = 0;
+                if(repairCost > 3000) repairCost = 3000;
                 continue;
             }else {
                 int tempHP, tempSkill;
@@ -65,21 +69,24 @@ bool readInput(
 
 // Task 1
 int damageEvaluation(int shipHP, int repairCost){
+    int sum_of_digits = 0;
     int sum = 0;
+    int tempHP = shipHP;
+    while(tempHP != 0){
+        sum_of_digits += tempHP % 10;
+        tempHP /= 10;
+    }
     bool perfNum = false;
-    for(int i = 1; i < sqrt(shipHP); i++){
-        if(shipHP % i == 0){
-            if(i * i != shipHP){
-                sum = sum + i + shipHP / i;
-            } else sum +=i;
+    for(int i = 1; i < sum_of_digits; i++){
+        if(sum_of_digits % i == 0){
+            sum += i;
         }
     }
-    if(sum == shipHP){
+    if(sum == sum_of_digits){
         perfNum = true;
-        cout << "ShipHP is a perfect number" << '\n';
-    } else cout << "ShipHP is not a perfect number" << '\n';
+    } 
     if(perfNum && shipHP < 455){
-        repairCost = ((repairCost + repairCost*0.5) * 3 + 1) / 2;
+        repairCost = (repairCost * 3 + 1) / 2;
         return repairCost;
     } else return repairCost;
 }
@@ -88,6 +95,11 @@ int damageEvaluation(int shipHP, int repairCost){
 int conflictSimulation(
     char character[FIXED_CHARACTER][MAX_NAME], int hp[FIXED_CHARACTER], int skill[FIXED_CHARACTER],
     int shipHP, int repairCost){
+        for(int i = 0; i < FIXED_CHARACTER; i++){
+            if(character[i] == ""){
+
+            }
+        }
         return 0;
     }
 
