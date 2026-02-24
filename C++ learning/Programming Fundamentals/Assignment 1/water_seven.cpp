@@ -95,12 +95,49 @@ int damageEvaluation(int shipHP, int repairCost){
 int conflictSimulation(
     char character[FIXED_CHARACTER][MAX_NAME], int hp[FIXED_CHARACTER], int skill[FIXED_CHARACTER],
     int shipHP, int repairCost){
+        int skillL;
+        int skillU;
         for(int i = 0; i < FIXED_CHARACTER; i++){
-            if(character[i] == ""){
-
+            string temp_name = character[i];
+            if(temp_name.find("LUFFY") != string::npos){
+                skillL = skill[i];
+                cout << "Luffy: " << skillL << '\n';
+            }
+            if(temp_name.find("USOPP") != string::npos){
+                skillU = skill[i];
+                cout << "Usopp: " << skillU << '\n';
             }
         }
-        return 0;
+        int conflictIndex = skillL - skillU + (repairCost / 100) + ((500 - shipHP) / 50);
+        int id = conflictIndex % 6;
+        int count = 0;
+        while(count < 10){
+            switch(id){
+                case 0:
+                    conflictIndex += 255;
+                    break;
+                case 1:
+                    conflictIndex += 20;
+                    break;
+                case 2:
+                    conflictIndex += 50;
+                    break;
+                case 3:
+                    conflictIndex += 70;
+                    break;
+                case 4:
+                    conflictIndex += 90;
+                    break;
+                case 5:
+                    conflictIndex += 100;
+                    break;
+            }
+            cout << conflictIndex << '\n';
+            if(conflictIndex >= 255){
+                break;
+            } else count++;
+        }
+        return conflictIndex;
     }
 
 // Task 3

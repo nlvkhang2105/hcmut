@@ -41,5 +41,9 @@ int main(int argc, const char * argv[]) {
     cout << "----------TASK 1----------\n";
     cout << "The repair cost for the ship is: " << damageEvaluation(shipHP,repairCost) << '\n';
     cout << "----------END TASK 1----------\n\n";
+    // Check task 2
+    cout << "----------TASK 2----------\n";
+    cout << "The conflictindex is: " << conflictSimulation(character, hp, skill, shipHP, repairCost) << '\n';
+    cout << "----------END TASK 2----------\n\n";
     return 0;
 }
