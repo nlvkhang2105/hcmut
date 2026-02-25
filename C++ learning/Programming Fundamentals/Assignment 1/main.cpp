@@ -16,8 +16,10 @@ int main(int argc, const char * argv[]) {
     char character[FIXED_CHARACTER][MAX_NAME];
     int hp[FIXED_CHARACTER];
     int skill[FIXED_CHARACTER];
+    char duel[FIXED_CHARACTER][MAX_NAME];
     int shipHP;
     int repairCost;
+    int conflictIndex;
     cout << FIXED_CHARACTER << '\n';
     if(argc < 2){
         cout << "Input file missing" << '\n';
@@ -38,12 +40,18 @@ int main(int argc, const char * argv[]) {
     cout << "Going Merry: " << shipHP << char(32) << repairCost << '\n';
     cout << "----------END TASK 0----------\n\n";
     // Check task 1
+    repairCost = damageEvaluation(shipHP, repairCost);
     cout << "----------TASK 1----------\n";
-    cout << "The repair cost for the ship is: " << damageEvaluation(shipHP,repairCost) << '\n';
+    cout << "The repair cost for the ship is: " << repairCost << '\n';
     cout << "----------END TASK 1----------\n\n";
     // Check task 2
+    conflictIndex = conflictSimulation(character, hp, skill, shipHP, repairCost);
     cout << "----------TASK 2----------\n";
-    cout << "The conflictindex is: " << conflictSimulation(character, hp, skill, shipHP, repairCost) << '\n';
+    cout << "The conflictindex is: " << conflictIndex << '\n';
     cout << "----------END TASK 2----------\n\n";
+    // Check task 3
+    cout << "----------TASK 3----------\n";
+    resolveDuel(character, hp, skill, conflictIndex, repairCost, duel);
+    cout << "----------END TASK 3----------\n\n";
     return 0;
 }

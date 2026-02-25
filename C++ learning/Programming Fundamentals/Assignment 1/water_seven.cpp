@@ -101,11 +101,9 @@ int conflictSimulation(
             string temp_name = character[i];
             if(temp_name.find("LUFFY") != string::npos){
                 skillL = skill[i];
-                cout << "Luffy: " << skillL << '\n';
             }
             if(temp_name.find("USOPP") != string::npos){
                 skillU = skill[i];
-                cout << "Usopp: " << skillU << '\n';
             }
         }
         int conflictIndex = skillL - skillU + (repairCost / 100) + ((500 - shipHP) / 50);
@@ -132,19 +130,56 @@ int conflictSimulation(
                     conflictIndex += 100;
                     break;
             }
-            cout << conflictIndex << '\n';
             if(conflictIndex >= 255){
                 break;
             } else count++;
         }
-        return conflictIndex;
+        return ceil(conflictIndex);
     }
 
 // Task 3
 void resolveDuel(
     char character[FIXED_CHARACTER][MAX_NAME], int hp[FIXED_CHARACTER], int skill[FIXED_CHARACTER],
     int conflictIndex, int repairCost, char duel[FIXED_CHARACTER][MAX_NAME]){
-        //TODO: Output assign to duel parameter
+        int ID_main = 0;
+        int ID_support = 0;
+        int lufID, usID;
+        char mainChar[2][MAX_NAME];
+        int mainSkill[2];
+        char supChar[FIXED_CHARACTER - 2][MAX_NAME];
+        int support[FIXED_CHARACTER - 2];
+        int cost[FIXED_CHARACTER - 2];
+        int teamLuf;
+        for(int i = 0; i < FIXED_CHARACTER; i++){
+            string tempName = character[i];
+            if(tempName == "LUFFY" || tempName == "USOPP"){
+                strcpy(mainChar[ID_main],character[i]);
+                mainSkill[ID_main] = skill[i];
+                if(tempName == "LUFFY"){
+                    lufID = ID_main;
+                } else usID = ID_main;
+                ID_main++;
+            } else {
+                strcpy(supChar[ID_support],character[i]);
+                support[ID_support] = skill[i];
+                cost[ID_support] = (hp[i] % 10) + 1;
+                ID_support++;
+            }
+        }
+        float U = mainSkill[usID] + (conflictIndex / 20) + (repairCost / 500);
+        for(int i = 0; i < FIXED_CHARACTER - 3; i++){
+            int minIndex = i;
+            int tempCost, tempSupVal;
+            for(int j = i + 1; j < FIXED_CHARACTER - 2; j++){
+                if(cost[j] < cost[minIndex]){
+                    minIndex = j;
+                }
+            }
+            swap(supChar[i],supChar[minIndex]);
+            swap(support[i],support[minIndex]);
+            swap(cost[i],cost[minIndex]);
+        }
+        
     }
 
 // Task 4
