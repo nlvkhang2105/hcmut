@@ -51,6 +51,7 @@ int main(int argc, const char * argv[]) {
     cout << "----------END TASK 2----------\n\n";
     // Check task 3
     cout << "----------TASK 3----------\n";
+    cout << "Support characters: "; 
     resolveDuel(character, hp, skill, conflictIndex, repairCost, duel);
     cout << "----------END TASK 3----------\n\n";
     return 0;

@@ -49,7 +49,6 @@ bool readInput(
                     skill[i] = tempSkill;
                     i++;
                 } else {
-                    cout << "Character " << test << " exists, moving on..." << '\n';
                     hp[duplicate] = tempHP;
                     skill[duplicate] = tempSkill;
                     continue;
@@ -166,7 +165,7 @@ void resolveDuel(
                 ID_support++;
             }
         }
-        float U = mainSkill[usID] + (conflictIndex / 20) + (repairCost / 500);
+        float UsPower = mainSkill[usID] + (conflictIndex / 20) + (repairCost / 500);
         for(int i = 0; i < FIXED_CHARACTER - 3; i++){
             int minIndex = i;
             int tempCost, tempSupVal;
@@ -179,7 +178,16 @@ void resolveDuel(
             swap(support[i],support[minIndex]);
             swap(cost[i],cost[minIndex]);
         }
-        
+        int sumPower = 0;
+        int current = 0;
+        while(sumPower < UsPower){
+            sumPower += support[current];
+            strcpy(duel[current],supChar[current]);
+            current++;
+        }
+        for(int i = 0; i <= current; i++){
+            cout << duel[i] << '\n';
+        }
     }
 
 // Task 4
