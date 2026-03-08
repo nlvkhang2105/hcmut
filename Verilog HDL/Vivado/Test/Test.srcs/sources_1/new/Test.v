@@ -7,9 +7,3 @@ module Test(A,B,C,D,E);
     not #(10)G2(E,C);
     or #(20)G3(D,w1,E);
 endmodule
-
-module test_tb();
-    wire D,E;
-    reg A,B,C;
-    Test t1(A,B,C,D,E);
-    
