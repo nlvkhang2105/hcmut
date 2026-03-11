@@ -166,27 +166,41 @@ void resolveDuel(
             }
         }
         float UsPower = mainSkill[usID] + (conflictIndex / 20) + (repairCost / 500);
-        for(int i = 0; i < FIXED_CHARACTER - 3; i++){
-            int minIndex = i;
-            int tempCost, tempSupVal;
-            for(int j = i + 1; j < FIXED_CHARACTER - 2; j++){
-                if(cost[j] < cost[minIndex]){
-                    minIndex = j;
+        int bestCost = 999;
+        int bestSize = 999;
+        int bestCombo = -1;
+        int totalCombo = 32;
+        for(int i = 0; i < totalCombo; i++){
+            int currentSup = 0;
+            int currentCost = 0;
+            int currentNumofMem = 0;
+            for(int j = 0; j < ID_support;j++){
+                int currentSup = 0;
+                int currentCost = 0;
+                int currentSize = 0;
+                if((i >> j) & 1){
+                    currentSup += support[j];
+                    currentCost += cost[j];
+                    currentSize++;
                 }
             }
-            swap(supChar[i],supChar[minIndex]);
-            swap(support[i],support[minIndex]);
-            swap(cost[i],cost[minIndex]);
+            if(mainSkill[lufID] + currentSup >= UsPower){
+                if(currentCost < bestCost || (currentCost == bestCost && currentNumofMem < bestSize)){
+                    bestCost = currentCost;
+                    bestSize = currentNumofMem;
+                    bestCombo = i;
+                }
+            }
         }
-        int sumPower = 0;
-        int current = 0;
-        while(sumPower < UsPower){
-            sumPower += support[current];
-            strcpy(duel[current],supChar[current]);
-            current++;
+        int index = 0;
+        if(bestCombo != -1){
+            for(int i = 0; i < ID_support; i++){
+                strcpy(duel[index],supChar[i]);
+                index++;
+            }
         }
-        for(int i = 0; i <= current; i++){
-            cout << duel[i] << '\n';
+        for(int i = 0; i < index; i++){
+            cout << duel[i] << " ";
         }
     }
 
