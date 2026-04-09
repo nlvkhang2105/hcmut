@@ -140,70 +140,70 @@ int conflictSimulation(
 void resolveDuel(
     char character[FIXED_CHARACTER][MAX_NAME], int hp[FIXED_CHARACTER], int skill[FIXED_CHARACTER],
     int conflictIndex, int repairCost, char duel[FIXED_CHARACTER][MAX_NAME]){
-        int ID_main = 0;
-        int ID_support = 0;
-        int lufID, usID;
-        char mainChar[2][MAX_NAME];
-        int mainSkill[2];
-        char supChar[FIXED_CHARACTER - 2][MAX_NAME];
-        int support[FIXED_CHARACTER - 2];
-        int cost[FIXED_CHARACTER - 2];
-        int teamLuf;
+        
+        int skillLuffy = 0, skillUsopp = 0;
+        char supChar[FIXED_CHARACTER][MAX_NAME];
+        int support[FIXED_CHARACTER];
+        int cost[FIXED_CHARACTER];
+        int numSupports = 0;
         for(int i = 0; i < FIXED_CHARACTER; i++){
-            string tempName = character[i];
-            if(tempName == "LUFFY" || tempName == "USOPP"){
-                strcpy(mainChar[ID_main],character[i]);
-                mainSkill[ID_main] = skill[i];
-                if(tempName == "LUFFY"){
-                    lufID = ID_main;
-                } else usID = ID_main;
-                ID_main++;
+            string name = character[i];
+            if(name == "LUFFY"){
+                skillLuffy = skill[i];
+            } else if(name == "USOPP"){
+                skillUsopp = skill[i];
             } else {
-                strcpy(supChar[ID_support],character[i]);
-                support[ID_support] = skill[i];
-                cost[ID_support] = (hp[i] % 10) + 1;
-                ID_support++;
+                strcpy(supChar[numSupports], character[i]);
+                support[numSupports] = skill[i];
+                cost[numSupports] = (hp[i] % 10) + 1;
+                numSupports++;
             }
         }
-        float UsPower = mainSkill[usID] + (conflictIndex / 20) + (repairCost / 500);
+        int U = skillUsopp + (conflictIndex / 20) + (repairCost / 500);
         int bestCost = 999;
         int bestSize = 999;
-        int bestCombo = -1;
-        int totalCombo = 32;
-        for(int i = 0; i < totalCombo; i++){
-            int currentSup = 0;
+        int bestMask = -1;
+        int totalCombinations = 32;
+        for (int mask = 0; mask < totalCombinations; mask++) {
+            int currentSupport = 0;
             int currentCost = 0;
-            int currentNumofMem = 0;
-            for(int j = 0; j < ID_support;j++){
-                int currentSup = 0;
-                int currentCost = 0;
-                int currentSize = 0;
-                if((i >> j) & 1){
-                    currentSup += support[j];
+            int currentSize = 0;
+            for (int j = 0; j < numSupports; j++) {
+                if ((mask >> j) & 1) { 
+                    currentSupport += support[j];
                     currentCost += cost[j];
                     currentSize++;
                 }
             }
-            if(mainSkill[lufID] + currentSup >= UsPower){
-                if(currentCost < bestCost || (currentCost == bestCost && currentNumofMem < bestSize)){
+            if (skillLuffy + currentSupport >= U) {
+                if (currentCost < bestCost || (currentCost == bestCost && currentSize < bestSize)) {
                     bestCost = currentCost;
-                    bestSize = currentNumofMem;
-                    bestCombo = i;
+                    bestSize = currentSize;
+                    bestMask = mask;
                 }
             }
         }
-        int index = 0;
-        if(bestCombo != -1){
-            for(int i = 0; i < ID_support; i++){
-                strcpy(duel[index],supChar[i]);
-                index++;
+        for(int i = 0; i < FIXED_CHARACTER; i++){
+            duel[i][0] = '\0';
+        }
+        int duelIndex = 0;
+        if (bestMask != -1) {
+            for (int j = 0; j < numSupports; j++) {
+                if ((bestMask >> j) & 1) {
+                    strcpy(duel[duelIndex], supChar[j]);
+                    duelIndex++;
+                }
             }
         }
-        for(int i = 0; i < index; i++){
+    cout << "Luffy's Support Team: ";
+    bool hasSupport = false;
+
+    for (int i = 0; i < FIXED_CHARACTER; i++) {
+        if (duel[i][0] != '\0') {
             cout << duel[i] << " ";
         }
     }
-
+}
 // Task 4
 void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME], 
     int hp[FIXED_CHARACTER], int skill[FIXED_CHARACTER], int conflictIndex, 
