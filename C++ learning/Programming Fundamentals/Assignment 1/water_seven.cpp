@@ -108,6 +108,9 @@ int conflictSimulation(
         int conflictIndex = skillL - skillU + (repairCost / 100) + ((500 - shipHP) / 50);
         int id = conflictIndex % 6;
         int count = 0;
+        if(conflictIndex == 255){
+            return conflictIndex;
+        }
         while(count < 10){
             switch(id){
                 case 0:
@@ -239,7 +242,42 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
                 position++;
             }
             splittedBlocks[i][curBlockLen] = '\0';
+            cout << splittedBlocks[i];
         }
+        cout << endl;
+        char tempResult[numBlocks][blockSize + 1];
+        bool isValid = false;
+        for(int i = 0; i < numBlocks; i++){
+            int tempChar; 
+            char decodedChar;
+            for(int j = 0; j < blockSize + 1; j++){
+                int curChar = (int)splittedBlocks[i][j];
+                if(curChar >= 65 && curChar <= 90){
+                    tempChar = curChar - 65;
+                    tempChar -= key;
+                    if(tempChar < 0) tempChar += 26;
+                    decodedChar = tempChar + 65;
+                } else if(curChar >= 97 && curChar <= 122){
+                    tempChar = curChar - 97;
+                    tempChar -= key;
+                    if(tempChar < 0) tempChar += 26;
+                    decodedChar = tempChar + 97;
+                } else if(curChar >= 48 && curChar <= 57){
+                    tempChar = curChar - 48;
+                    tempChar -= (key % 10);
+                    if(tempChar < 0) tempChar += 10;
+                    decodedChar = tempChar + 48;
+                } else decodedChar = curChar;
+                tempResult[i][j] = decodedChar;
+            }
+            if(tempResult[i] == "CP9" || tempResult[i] == "ENIESLOBBY"){
+                isValid = true;
+            }
+            if(i == 0){
+                strcpy(resultText,tempResult[i]);
+            } else strcat(resultText,tempResult[i]);
+        }
+        cout << resultText << endl;
     }
 
 // Task 5
