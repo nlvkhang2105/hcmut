@@ -20,6 +20,8 @@ int main(int argc, const char * argv[]) {
     int shipHP;
     int repairCost;
     int conflictIndex;
+    char cipherText[70];
+    char resultText[100];
     cout << FIXED_CHARACTER << '\n';
     if(argc < 2){
         cout << "Input file missing" << '\n';
@@ -53,5 +55,11 @@ int main(int argc, const char * argv[]) {
     cout << "----------TASK 3----------\n";
     resolveDuel(character, hp, skill, conflictIndex, repairCost, duel);
     cout << "\n----------END TASK 3----------\n\n";
+    // Check task 4
+    cout << "----------TASK 4----------\n";
+    // cin >> cipherText;
+    strcpy(cipherText,"GWSBS CHMPPCZ#55");
+    decodeCP9Message(character, hp, skill, 100, 200, cipherText, resultText);
+    cout << "\n----------END TASK 4----------\n\n";
     return 0;
 }

@@ -148,9 +148,9 @@ void resolveDuel(
         int numSupports = 0;
         for(int i = 0; i < FIXED_CHARACTER; i++){
             string name = character[i];
-            if(name == "LUFFY"){
+            if(name.find("LUFFY") != string::npos){
                 skillLuffy = skill[i];
-            } else if(name == "USOPP"){
+            } else if(name.find("USOPP") != string::npos){
                 skillUsopp = skill[i];
             } else {
                 strcpy(supChar[numSupports], character[i]);
@@ -195,9 +195,6 @@ void resolveDuel(
                 }
             }
         }
-    cout << "Luffy's Support Team: ";
-    bool hasSupport = false;
-
     for (int i = 0; i < FIXED_CHARACTER; i++) {
         if (duel[i][0] != '\0') {
             cout << duel[i] << " ";
@@ -208,7 +205,38 @@ void resolveDuel(
 void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME], 
     int hp[FIXED_CHARACTER], int skill[FIXED_CHARACTER], int conflictIndex, 
     int repairCost, char cipherText[], char resultText[]){
-        //TODO: Output assign to resultText parameter
+        int charSum = 0;
+        int position = 0;
+        int checksum_origin;
+        int checksum;
+        
+        while(cipherText[position] != '#' && cipherText[position] != '\0'){
+            charSum += (int)cipherText[position];
+            position++;
+        }
+        checksum_origin = int(cipherText[position+1] - '0') * 10 + int(cipherText[position+2] - '0');
+        checksum = charSum % 100;
+        if(checksum != checksum_origin){
+            strcpy(resultText,"\0");
+            return;
+        }
+        int cipherLen = position + 1;
+        int key = (conflictIndex + repairCost) % 26;
+        int blockSize = (key % 5) + 4;
+        int numBlocks = (cipherLen + blockSize - 1) / blockSize;
+        cout << key << endl;
+        cout << blockSize << endl;
+        char splittedBlocks[numBlocks][blockSize + 1];
+        position = 0;
+        for(int i = 0; i < numBlocks; i++){
+            int j = 0;
+            while(j < blockSize && position < cipherLen && cipherText[position] != '#'){
+                splittedBlocks[i][j] = cipherText[position];
+                j++;
+                position++;
+            }
+            cout << splittedBlocks[i] << " ";
+        }
     }
 
 // Task 5
