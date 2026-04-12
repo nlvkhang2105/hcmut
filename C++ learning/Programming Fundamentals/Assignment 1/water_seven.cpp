@@ -277,6 +277,9 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
                 strcpy(resultText,tempResult[i]);
             } else strcat(resultText,tempResult[i]);
         }
+        if(isValid){
+            strcat(resultText,"_TRUE");
+        } else strcat(resultText,"_FALSE");
         cout << resultText << endl;
     }
 
