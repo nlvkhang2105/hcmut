@@ -224,18 +224,21 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
         int key = (conflictIndex + repairCost) % 26;
         int blockSize = (key % 5) + 4;
         int numBlocks = (cipherLen + blockSize - 1) / blockSize;
-        cout << key << endl;
-        cout << blockSize << endl;
         char splittedBlocks[numBlocks][blockSize + 1];
         position = 0;
         for(int i = 0; i < numBlocks; i++){
-            int j = 0;
-            while(j < blockSize && position < cipherLen && cipherText[position] != '#'){
+            int charsLeft = cipherLen - position;
+            int curBlockLen;
+            if(charsLeft < blockSize){
+                curBlockLen = charsLeft;
+            } else curBlockLen = blockSize;
+            int j = curBlockLen - 1;
+            while(j >= 0 && position < cipherLen && cipherText[position] != '#'){
                 splittedBlocks[i][j] = cipherText[position];
-                j++;
+                j--;
                 position++;
             }
-            cout << splittedBlocks[i] << " ";
+            splittedBlocks[i][curBlockLen] = '\0';
         }
     }
 
