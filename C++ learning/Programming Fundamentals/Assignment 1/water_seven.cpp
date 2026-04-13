@@ -285,11 +285,25 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
 
 // Task 5
 int analyzeDangerLimit(int grid[MAX_GRID][MAX_GRID], int rows, int cols){
-    int dangerLimit;
-    int rowSum = 0;
+    int dangerLimit = 0;
     int maxRowSum;
-    int maxCell;
-    
+    int maxCell = grid[0][0];
+    for(int i = 0; i < rows; i++){
+        int rowSum = 0;
+        for(int j = 0; j < cols; j++){
+            if(grid[i][j] < 0){
+                continue;
+            }
+            rowSum += grid[i][j];
+            if(grid[i][j] > maxCell){
+                maxCell = grid[i][j];
+            }
+        }
+        if(i == 0 || rowSum > maxRowSum){
+            maxRowSum = rowSum;
+        }
+    }
+    dangerLimit = maxRowSum + maxCell;
     return dangerLimit;
 }
 

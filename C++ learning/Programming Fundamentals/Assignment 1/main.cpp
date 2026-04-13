@@ -58,23 +58,16 @@ int main(int argc, const char * argv[]) {
     // Check task 4
     cout << "----------TASK 4----------\n";
     strcpy(cipherText,"ISNK4UH BTS #15");
-    cout << "Enter conflictIndex and repairCost:  ";
-    cin >> conflictIndex >> repairCost;
     decodeCP9Message(character, hp, skill, 10, 21, cipherText, resultText);
     cout << "\n----------END TASK 4----------\n\n";
     // Check task 5
     cout << "----------TASK 5.1----------\n";
-    int grid[MAX_GRID][MAX_GRID];
-    int rows, cols;
-    cout << "Enter rows and cols: ";
-    cin >> rows >> cols;
-    cout << endl;
-    cout << "Enter grid: ";
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < cols; j++){
-            cin >> grid[rows][cols];
-        }
-    }
+    int rows = 2;
+    int cols = 2;
+    int grid[MAX_GRID][MAX_GRID] = {
+        { 0, -1},
+        {-1, -1}
+    };
     cout << analyzeDangerLimit(grid, rows, cols);
     cout << "\n----------END TASK 5.1----------\n\n";
     return 0;
