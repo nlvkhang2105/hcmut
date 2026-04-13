@@ -233,16 +233,16 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
             int charsLeft = cipherLen - position;
             int curBlockLen;
             if(charsLeft < blockSize){
-                curBlockLen = charsLeft;
+                curBlockLen = charsLeft - 1;
             } else curBlockLen = blockSize;
             int j = curBlockLen - 1;
             while(j >= 0 && position < cipherLen && cipherText[position] != '#'){
                 splittedBlocks[i][j] = cipherText[position];
+                cout << "Reading " << cipherText[position] << " to coords " << i << ' ' << j << endl;
                 j--;
                 position++;
             }
             splittedBlocks[i][curBlockLen] = '\0';
-            cout << splittedBlocks[i];
         }
         cout << endl;
         char tempResult[numBlocks][blockSize + 1];
@@ -251,7 +251,7 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
             int tempChar; 
             char decodedChar;
             for(int j = 0; j < blockSize + 1; j++){
-                int curChar = (int)splittedBlocks[i][j];
+                int curChar = splittedBlocks[i][j];
                 if(curChar >= 65 && curChar <= 90){
                     tempChar = curChar - 65;
                     tempChar -= key;
@@ -270,7 +270,7 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
                 } else decodedChar = curChar;
                 tempResult[i][j] = decodedChar;
             }
-            if(tempResult[i] == "CP9" || tempResult[i] == "ENIESLOBBY"){
+            if(strstr(tempResult[i],"CP9") != NULL || strstr(tempResult[i],"ENIESLOBBY") != NULL){
                 isValid = true;
             }
             if(i == 0){
@@ -285,7 +285,12 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
 
 // Task 5
 int analyzeDangerLimit(int grid[MAX_GRID][MAX_GRID], int rows, int cols){
-    return 0;
+    int dangerLimit;
+    int rowSum = 0;
+    int maxRowSum;
+    int maxCell;
+    
+    return dangerLimit;
 }
 
 
