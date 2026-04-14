@@ -10,7 +10,7 @@ bool readInput(
     const string &filename,
     char character[FIXED_CHARACTER][MAX_NAME], int hp[FIXED_CHARACTER], 
     int skill[FIXED_CHARACTER], int &shipHP, int &repairCost){
-        ifstream inFile(filename);
+        ifstream inFile("filename");
         if(!inFile){
             return false;
         }
