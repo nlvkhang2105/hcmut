@@ -105,14 +105,15 @@ int conflictSimulation(
                 skillU = skill[i];
             }
         }
-        int conflictIndex = skillL - skillU + (repairCost / 100) + ((500 - shipHP) / 50);
-        int id = conflictIndex % 6;
+        double conflictIndex = (double)skillL - (double)skillU + ((double)repairCost / 100.0) + ((500.0 - (double)shipHP) / 50.0);
         int count = 0;
         if(conflictIndex == 255){
             return conflictIndex;
         }
         while(count < 10){
-            switch(id){
+            double id = fmod(conflictIndex,6.0);
+            int idRounded = ceil(id);
+            switch(idRounded){
                 case 0:
                     conflictIndex += 255;
                     break;
@@ -132,7 +133,7 @@ int conflictSimulation(
                     conflictIndex += 100;
                     break;
             }
-            if(conflictIndex >= 255){
+            if(conflictIndex>= 255){
                 break;
             } else count++;
         }
@@ -198,11 +199,6 @@ void resolveDuel(
                 }
             }
         }
-    for (int i = 0; i < FIXED_CHARACTER; i++) {
-        if (duel[i][0] != '\0') {
-            cout << duel[i] << " ";
-        }
-    }
 }
 // Task 4
 void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME], 
@@ -238,13 +234,11 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
             int j = curBlockLen - 1;
             while(j >= 0 && position < cipherLen && cipherText[position] != '#'){
                 splittedBlocks[i][j] = cipherText[position];
-                cout << "Reading " << cipherText[position] << " to coords " << i << ' ' << j << endl;
                 j--;
                 position++;
             }
             splittedBlocks[i][curBlockLen] = '\0';
         }
-        cout << endl;
         char tempResult[numBlocks][blockSize + 1];
         bool isValid = false;
         for(int i = 0; i < numBlocks; i++){
@@ -280,7 +274,6 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
         if(isValid){
             strcat(resultText,"_TRUE");
         } else strcat(resultText,"_FALSE");
-        cout << resultText << endl;
     }
 
 // Task 5
@@ -309,7 +302,41 @@ int analyzeDangerLimit(int grid[MAX_GRID][MAX_GRID], int rows, int cols){
 
 
 bool evaluateRoute(int grid[MAX_GRID][MAX_GRID], int rows, int cols, int dangerLimit){
-    return false;
+    int costMap[rows][cols];
+    if(grid[0][0] == -1 || grid[rows - 1][cols - 1] == -1){
+        return false;
+    }
+    costMap[0][0] = grid[0][0];
+    for(int i = 1; i < cols; i++){
+        if(grid[0][i] == -1 || costMap[0][i-1] >= 9999){
+            costMap[0][i] = 9999;
+        } else {
+            costMap[0][i] = costMap[0][i-1] + grid[0][i];
+        }
+    }
+    for(int i = 1; i < rows; i++){
+        if(grid[i][0] == -1 || costMap[i-1][0] >= 9999){
+            costMap[i][0] = 9999;
+        } else {
+            costMap[i][0] = costMap[i-1][0] + grid[i][0];
+        }
+    }
+    int i = 0;
+    int j = 0;
+    for(int i = 1; i < rows; i++){
+        for(int j = 1; j < cols; j++){
+            if (grid[i][j] == -1) {
+                costMap[i][j] = 9999;
+            } else{
+                int above = costMap[i-1][j];
+                int left = costMap[i][j-1];
+                costMap[i][j] = grid[i][j] + min(above,left);
+            }
+        }
+    }
+    if(costMap[rows-1][cols-1] <= dangerLimit){
+        return true;
+    } else return false;
 }
 
 

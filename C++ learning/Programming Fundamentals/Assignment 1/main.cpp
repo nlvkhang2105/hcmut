@@ -62,13 +62,20 @@ int main(int argc, const char * argv[]) {
     cout << "\n----------END TASK 4----------\n\n";
     // Check task 5
     cout << "----------TASK 5.1----------\n";
-    int rows = 2;
-    int cols = 2;
+    int rows = 3;
+    int cols = 3;
     int grid[MAX_GRID][MAX_GRID] = {
-        { 0, -1},
-        {-1, -1}
+        {0, 1, 0},
+        {1,-1, 1},
+        {0, 0, 0}
     };
-    cout << analyzeDangerLimit(grid, rows, cols);
+    int dangerLimit = analyzeDangerLimit(grid, rows, cols);
+    cout << dangerLimit;
     cout << "\n----------END TASK 5.1----------\n\n";
+
+    cout << "----------TASK 5.2----------\n";
+    bool canGo = evaluateRoute(grid, rows, cols, dangerLimit);
+    cout << canGo;
+    cout << "\n----------END TASK 5.2----------\n\n";
     return 0;
 }
