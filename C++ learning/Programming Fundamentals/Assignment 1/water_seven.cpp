@@ -231,9 +231,10 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
             if(charsLeft < blockSize){
                 curBlockLen = charsLeft - 1;
             } else curBlockLen = blockSize;
-            int j = curBlockLen - 1;
+            int j = curBlockLen - 2;
             while(j >= 0 && position < cipherLen && cipherText[position] != '#'){
                 splittedBlocks[i][j] = cipherText[position];
+                cout << "Reading " << cipherText[position] << " to coords " << i << ' ' << j << endl;
                 j--;
                 position++;
             }
