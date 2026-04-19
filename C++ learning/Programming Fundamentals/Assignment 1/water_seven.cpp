@@ -68,6 +68,7 @@ bool readInput(
 
 // Task 1
 int damageEvaluation(int shipHP, int repairCost){
+    
     int sum_of_digits = 0;
     int sum = 0;
     int tempHP = shipHP;
@@ -83,10 +84,13 @@ int damageEvaluation(int shipHP, int repairCost){
     }
     if(sum == sum_of_digits && sum_of_digits > 0){
         perfNum = true;
-    }
+    } 
     if(perfNum && shipHP < 455){
         repairCost = (repairCost * 3 + 1) / 2;
-    } if(repairCost > 3000) repairCost = 3000;  else return ceil(repairCost);
+        ceil(repairCost);
+        if(repairCost > 3000) repairCost = 3000;
+        return repairCost;
+    } else return ceil(repairCost);
 }
 
 // Task 2
@@ -162,7 +166,7 @@ void resolveDuel(
                 numSupports++;
             }
         }
-        int U = skillUsopp + (conflictIndex / 20) + (repairCost / 500);
+        int U = ceil(skillUsopp + (conflictIndex / 20.0) + (repairCost / 500.0));
         int bestCost = 999;
         int bestSize = 999;
         int bestMask = -1;
@@ -185,9 +189,6 @@ void resolveDuel(
                     bestMask = mask;
                 }
             }
-        }
-        for(int i = 0; i < FIXED_CHARACTER; i++){
-            duel[i][0] = '\0';
         }
         int duelIndex = 0;
         if (bestMask != -1) {
