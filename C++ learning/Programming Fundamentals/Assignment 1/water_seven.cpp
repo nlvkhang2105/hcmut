@@ -219,7 +219,7 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
             strcpy(resultText,"\0");
             return;
         }
-        int cipherLen = position + 1;
+        int cipherLen = position;
         int key = (conflictIndex + repairCost) % 26;
         int blockSize = (key % 5) + 4;
         int numBlocks = (cipherLen + blockSize - 1) / blockSize;
@@ -229,7 +229,7 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
             int charsLeft = cipherLen - position;
             int curBlockLen;
             if(charsLeft < blockSize){
-                curBlockLen = charsLeft - 1;
+                curBlockLen = charsLeft;
             } else curBlockLen = blockSize;
             int j = curBlockLen - 1;
             while(j >= 0 && position < cipherLen && cipherText[position] != '#'){
@@ -244,7 +244,7 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
         for(int i = 0; i < numBlocks; i++){
             int tempChar; 
             char decodedChar;
-            for(int j = 0; j < blockSize + 1; j++){
+            for(int j = 0; j < splittedBlocks[i][j] != '\0'; j++){
                 int curChar = splittedBlocks[i][j];
                 if(curChar >= 65 && curChar <= 90){
                     tempChar = curChar - 65;
@@ -264,6 +264,7 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
                 } else decodedChar = curChar;
                 tempResult[i][j] = decodedChar;
             }
+            resultText[0] = '\0';
             if(strstr(tempResult[i],"CP9") != NULL || strstr(tempResult[i],"ENIESLOBBY") != NULL){
                 isValid = true;
             }
