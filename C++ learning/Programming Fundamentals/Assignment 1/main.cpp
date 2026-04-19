@@ -57,7 +57,7 @@ int main(int argc, const char * argv[]) {
     cout << "\n----------END TASK 3----------\n\n";
     // Check task 4
     cout << "----------TASK 4----------\n";
-    strcpy(cipherText,"AQ 7XK#96");
+    strcpy(cipherText,"D 0KXN#89");
     decodeCP9Message(character, hp, skill, 120, 1500, cipherText, resultText);
     cout << resultText;
     cout << "\n----------END TASK 4----------\n\n";

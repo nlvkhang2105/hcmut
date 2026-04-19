@@ -10,7 +10,7 @@ bool readInput(
     const string &filename,
     char character[FIXED_CHARACTER][MAX_NAME], int hp[FIXED_CHARACTER], 
     int skill[FIXED_CHARACTER], int &shipHP, int &repairCost){
-        ifstream inFile("filename");
+        ifstream inFile(filename);
         if(!inFile){
             return false;
         }
@@ -28,7 +28,7 @@ bool readInput(
                 if(repairCost < 0) repairCost = 0;
                 if(repairCost > 3000) repairCost = 3000;
                 continue;
-            }else {
+            }else if(test == "LUFFY" || test == "ZORO" || test == "USOPP" || test == "NAMI" || test == "CHOPPER" || test == "SANJI" || test == "ROBIN"){
                 int tempHP, tempSkill;
                 ss >> tempHP >> tempSkill;
                 if(tempHP < 0) tempHP = 0;
@@ -53,7 +53,7 @@ bool readInput(
                     skill[duplicate] = tempSkill;
                     continue;
                 }
-            }
+            } else continue;
         }
         inFile.close();
         for (int k = i; k < FIXED_CHARACTER; k++) {
@@ -81,13 +81,12 @@ int damageEvaluation(int shipHP, int repairCost){
             sum += i;
         }
     }
-    if(sum == sum_of_digits){
+    if(sum == sum_of_digits && sum_of_digits > 0){
         perfNum = true;
-    } 
+    }
     if(perfNum && shipHP < 455){
         repairCost = (repairCost * 3 + 1) / 2;
-        return repairCost;
-    } else return repairCost;
+    } if(repairCost > 3000) repairCost = 3000;  else return ceil(repairCost);
 }
 
 // Task 2
@@ -231,10 +230,9 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
             if(charsLeft < blockSize){
                 curBlockLen = charsLeft - 1;
             } else curBlockLen = blockSize;
-            int j = curBlockLen - 2;
+            int j = curBlockLen - 1;
             while(j >= 0 && position < cipherLen && cipherText[position] != '#'){
                 splittedBlocks[i][j] = cipherText[position];
-                cout << "Reading " << cipherText[position] << " to coords " << i << ' ' << j << endl;
                 j--;
                 position++;
             }
