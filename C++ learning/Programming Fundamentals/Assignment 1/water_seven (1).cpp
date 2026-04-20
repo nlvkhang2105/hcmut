@@ -68,6 +68,7 @@ bool readInput(
 
 // Task 1
 int damageEvaluation(int shipHP, int repairCost){
+    
     int sum_of_digits = 0;
     int sum = 0;
     int tempHP = shipHP;
@@ -107,7 +108,7 @@ int conflictSimulation(
                 skillU = skill[i];
             }
         }
-        double conflictIndex = ceil((double)skillL - (double)skillU + ((double)repairCost / 100.0) + ((500.0 - (double)shipHP) / 50.0));
+        double conflictIndex = (double)skillL - (double)skillU + ((double)repairCost / 100.0) + ((500.0 - (double)shipHP) / 50.0);
         int count = 0;
         if(conflictIndex == 255){
             return conflictIndex;
@@ -203,26 +204,42 @@ void resolveDuel(
 void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME], 
     int hp[FIXED_CHARACTER], int skill[FIXED_CHARACTER], int conflictIndex, 
     int repairCost, char cipherText[], char resultText[]){
+    // 1. Tìm độ dài chuỗi để xác định vị trí chính xác của phần checksum ở cuối
     int len = 0;
     while (cipherText[len] != '\0') {
         len++;
     }
+
+    // Vị trí của ký tự '#' phân cách (luôn cách cuối 2 chữ số)
     int position = len - 3;
     int charSum = 0;
+
+    // Tính checksum bằng cách duyệt chính xác đến vị trí '#' cuối cùng
     for (int i = 0; i < position; i++) {
         charSum += (int)cipherText[i];
     }
-    int checksum_origin = (cipherText[position + 1] - '0') * 10 + (cipherText[position + 2] - '0');
+
+    int checksum_origin = (cipherText[position + 1] - '0') * 10 
+                        + (cipherText[position + 2] - '0');
+
     int checksum = charSum % 100;
+
     if (checksum != checksum_origin) {
         resultText[0] = '\0';
         return;
     }
+
+    // Độ dài phần cipher (trước '#')
     int cipherLen = position;
+
     int key = (conflictIndex + repairCost) % 26;
     int blockSize = (key % 5) + 4;
+
     int numBlocks = (cipherLen + blockSize - 1) / blockSize;
+
     char splittedBlocks[numBlocks][blockSize + 1];
+
+    // Chia block + đảo ngược từng block
     int currentPos = 0;
     for (int i = 0; i < numBlocks; i++) {
         int charsLeft = cipherLen - currentPos;
@@ -234,10 +251,16 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
             j--;
             currentPos++;
         }
-        splittedBlocks[i][curBlockLen] = '\0';
+
+        splittedBlocks[i][curBlockLen] = '\0'; // terminate
     }
+
     char tempResult[numBlocks][blockSize + 1];
-    resultText[0] = '\0';
+    bool isValid = false;
+
+    resultText[0] = '\0'; // 🔥 init 1 lần
+
+    // Decode từng block
     for (int i = 0; i < numBlocks; i++) {
         int j = 0;
 
@@ -270,18 +293,24 @@ void decodeCP9Message(char character[FIXED_CHARACTER][MAX_NAME],
 
             tempResult[i][j] = decodedChar;
         }
-        tempResult[i][j] = '\0'; 
+
+        tempResult[i][j] = '\0'; // 🔥 terminate đúng
+
+        // Check keyword
+        if (strstr(tempResult[i], "CP9") != NULL || 
+            strstr(tempResult[i], "ENIESLOBBY") != NULL) {
+            isValid = true;
+        }
+
+        // Ghép kết quả
         if (i == 0) {
             strcpy(resultText, tempResult[i]);
         } else {
             strcat(resultText, tempResult[i]);
         }
     }
-    bool isValid = false;
-    if (strstr(resultText, "CP9") != NULL || 
-        strstr(resultText, "ENIESLOBBY") != NULL) {
-        isValid = true;
-    }
+
+    // Append TRUE/FALSE
     if (isValid) {
         strcat(resultText, "_TRUE");
     } else {

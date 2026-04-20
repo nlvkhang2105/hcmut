@@ -1,0 +1,12 @@
+0.7
+2020.2
+Nov  8 2024
+22:36:55
+/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 1/Lab 1.sim/sim_1/behav/xsim/glbl.v,1772370937,verilog,,,,glbl,,,,,,,,
+/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 1/comparator_2bit.v,1776648531,verilog,,/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 1/comparator_4bit.v,,comparator_2bit,,,,,,,,
+/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 1/comparator_4bit.v,1776648537,verilog,,/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 1/tb_decoder_4bit.v,,comparator_4bit,,,,,,,,
+/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 1/dec1to2.v,1776644898,verilog,,/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 1/mux2to1.v,,dec1to2,,,,,,,,
+/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 1/exercise3.v,1776651366,verilog,,,,b_test;c_test;four_bit_ripplecarry_adder;full_adder;half_adder,,,,,,,,
+/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 1/mux2to1.v,1776644074,verilog,,/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 1/mux2to1_tb.v,,mux2to1,,,,,,,,
+/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 1/mux2to1_tb.v,1776644072,verilog,,,,mux2to1_tb,,,,,,,,
+/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 1/tb_decoder_4bit.v,1776651270,verilog,,,,tb_comparator_4bit,,,,,,,,
