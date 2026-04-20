@@ -146,7 +146,6 @@ int conflictSimulation(
 void resolveDuel(
     char character[FIXED_CHARACTER][MAX_NAME], int hp[FIXED_CHARACTER], int skill[FIXED_CHARACTER],
     int conflictIndex, int repairCost, char duel[FIXED_CHARACTER][MAX_NAME]){
-        
         int skillLuffy = 0, skillUsopp = 0;
         char supChar[FIXED_CHARACTER][MAX_NAME];
         int support[FIXED_CHARACTER];
