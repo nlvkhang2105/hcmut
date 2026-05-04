@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 2/Lab 2.srcs/sources_1/new/Ex2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Ex2
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 2/Lab 2.srcs/sim_1/new/Ex2_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Ex2_tb

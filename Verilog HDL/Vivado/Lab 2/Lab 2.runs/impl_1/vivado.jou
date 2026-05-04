@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Mon May  4 10:09:34 2026
+# Process ID         : 67563
+# Current directory  : /home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 2/Lab 2.runs/impl_1
+# Command line       : vivado -log bin2led7.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source bin2led7.tcl -notrace
+# Log file           : /home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 2/Lab 2.runs/impl_1/bin2led7.vdi
+# Journal file       : /home/nlvkhang/Documents/BK/Codes/hcmut/Verilog HDL/Vivado/Lab 2/Lab 2.runs/impl_1/vivado.jou
+# Running On         : hp-arch
+# Platform           : Arch
+# Operating System   : Arch Linux
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+# CPU Frequency      : 3422.470 MHz
+# CPU Physical cores : 4
+# CPU Logical cores  : 8
+# Host memory        : 16481 MB
+# Swap memory        : 4294 MB
+# Total Virtual      : 20776 MB
+# Available Virtual  : 12555 MB
+#-----------------------------------------------------------
+source bin2led7.tcl -notrace
